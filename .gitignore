@@ -15,3 +15,6 @@ dist/
 
 # ログ
 *.log
+
+.vercel
+.env*
