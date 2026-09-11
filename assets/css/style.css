@@ -951,21 +951,21 @@ body {
 }
 
 /* 建設：角丸の吹き出し（359×217）。頭部の中央にラベル、左上に click */
-.bubble--build { left: 1%; top: 2%; width: 57%; }
+.bubble--build { left: 2.5%; top: 2%; width: 57%; }
 .bubble--build .bubble__label { top: 41%; }
 .bubble--build .bubble__click { top: -12%; left: 8%; transform: rotate(-8deg); }
 .bubble--build:hover .bubble__shape { color: #f5a637; }
 .bubble--build:hover .bubble__label { color: #f5a637; }
 
 /* 環境：ほぼ円形（287×287）。中央にラベル、左上に click */
-.bubble--env { left: 55%; top: 23%; width: 41%; }
+.bubble--env { left: 56.5%; top: 23%; width: 41%; }
 .bubble--env .bubble__label { top: 47%; }
 .bubble--env .bubble__click { top: -9%; left: 22%; transform: rotate(-6deg); }
 .bubble--env:hover .bubble__shape { color: #69be8d; }
 .bubble--env:hover .bubble__label { color: #69be8d; }
 
 /* 福祉：不定形ポリゴン（313×239）。やや上にラベル、右上に click */
-.bubble--welfare { left: 1%; top: 55%; width: 54%; }
+.bubble--welfare { left: 2.5%; top: 55%; width: 54%; }
 .bubble--welfare .bubble__label { top: 44%; }
 .bubble--welfare .bubble__click { top: -2%; right: 12%; transform: rotate(18deg); }
 .bubble--welfare:hover .bubble__shape { color: #7fcef4; }
