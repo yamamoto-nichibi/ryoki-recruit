@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+
+# 依存 / ビルド（将来ツールを入れた場合）
+node_modules/
+dist/
+.cache/
+
+# ログ
+*.log

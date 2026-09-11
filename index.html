@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用サイト｜株式会社リョーキ</title>
+
+  <!-- SEO / OGP（本番前に差し替え） -->
+  <meta name="description" content="株式会社リョーキの新卒採用サイト。事業内容、先輩社員インタビュー、募集要項、エントリー情報を掲載しています。">
+  <meta property="og:title" content="採用サイト｜株式会社リョーキ">
+  <meta property="og:description" content="株式会社リョーキの新卒採用サイト。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/assets/images/ogp.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== ヘッダー ===== -->
+  <header class="site-header" id="header">
+    <div class="site-header__inner">
+      <a href="#hero" class="site-header__logo">
+        <img src="assets/images/logo.png" alt="株式会社リョーキ" width="219" height="54">
+      </a>
+      <nav class="site-header__links" aria-label="関連サイト">
+        <a class="site-header__link" href="#" target="_blank" rel="noopener">コーポレートサイト</a>
+        <a class="site-header__link" href="#" target="_blank" rel="noopener">採用情報</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== ファーストビュー / スクラップブック ===== -->
+    <section class="fv" id="hero" aria-label="株式会社リョーキ 採用サイト">
+      <div class="fv__stage">
+
+        <!-- 写真を重ねて貼ったコラージュ（新聞の写真面付け／Photoshop のグリッドコラージュ風）。
+             各写真は position:absolute で、赤枠の参考画像どおりに --l/--t/--w/--h（left/top/width/height）
+             をピクセル設計 → % に換算して指定。CSS Grid は使わない。
+             ・white のフチ / padding / box-shadow / 回転 / 拡大は一切付けない（写真は水平垂直）。
+             ・写真同士は端を少し重ねて配置し、前後は --z（z-index）で決める。
+             ・参考画像どおり、ところどころ写真の間に白地（.fv の #fff）が見える。 -->
+
+        <!-- ── z 下：大きい背景タイル ── -->
+        <img class="fv__tile" style="--l:66.771%; --t:0.556%;  --w:33.646%; --h:43.889%; --z:1; --d:.05s"
+             src="assets/images/fv/const-cranes.jpg" alt="都市の建設現場のクレーン" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:47.812%; --t:0.556%;  --w:19.792%; --h:16.296%; --z:2; --d:.12s"
+             src="assets/images/fv/hq.jpg" alt="リョーキ本社" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:28.958%; --t:0.556%;  --w:18.437%; --h:13.333%; --z:2; --d:.10s"
+             src="assets/images/fv/env-attach.jpg" alt="解体アタッチメント" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:0;       --t:75.926%; --w:28.542%; --h:24.630%; --z:2; --d:.20s"
+             src="assets/images/fv/const-steel.jpg" alt="鉄骨造の建設現場" loading="eager" decoding="async">
+
+        <!-- ── z 中 ── -->
+        <img class="fv__tile" style="--l:15%;     --t:31.5%;   --w:27.5%;   --h:51%;     --z:3; --d:.24s"
+             src="assets/images/fv/crowd.jpg" alt="雑踏の中に立つ人" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:0;       --t:8.148%;  --w:30%;     --h:27%;     --z:3; --d:.16s"
+             src="assets/images/fv/const-training.jpg" alt="建機オペレーターの研修" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:30%;     --t:13%;     --w:28%;     --h:33%;     --z:4; --d:.22s"
+             src="assets/images/fv/family.jpg" alt="河川敷を歩く家族" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:63.5%;   --t:43.5%;   --w:19.5%;   --h:35%;     --z:4; --d:.30s"
+             src="assets/images/mv_sitemap_sp.jpg" alt="ずらりと並ぶ油圧ショベル" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:0;       --t:46.5%;   --w:19.479%; --h:27.5%;   --z:5; --d:.34s"
+             src="assets/images/fv/people-inspect.jpg" alt="機械の点検" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:78.958%; --t:35.185%; --w:21.458%; --h:23.519%; --z:5; --d:.28s"
+             src="assets/images/fv/people-talk.jpg" alt="現場での打ち合わせ" loading="eager" decoding="async">
+
+        <!-- ── z 上：前面に載るタイル ── -->
+        <img class="fv__tile" style="--l:56.562%; --t:17.222%; --w:11.146%; --h:17.963%; --z:6; --d:.40s"
+             src="assets/images/fv/recycle.jpg" alt="ペットボトルの循環" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:27%;     --t:57%;     --w:24%;     --h:30%;     --z:6; --d:.38s"
+             src="assets/images/fv/people-team.jpg" alt="リョーキの社員" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:28.958%; --t:80.741%; --w:13.229%; --h:19.815%; --z:7; --d:.46s"
+             src="assets/images/fv/env-shredder.jpg" alt="環境機器（破砕機）" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:39.5%;   --t:37%;     --w:27%;     --h:26%;     --z:8; --d:.44s"
+             src="assets/images/fv/const-truck.jpg" alt="建設機械の配送" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:49.5%;   --t:58%;     --w:9%;      --h:20%;     --z:9; --d:.50s"
+             src="assets/images/top_mv_sp3.jpg" alt="福祉用具（車いす）" loading="eager" decoding="async">
+        <img class="fv__tile" style="--l:82.917%; --t:59.074%; --w:17.5%;   --h:22.593%; --z:9; --d:.55s"
+             src="assets/images/fv/people-office.jpg" alt="オフィスでのやりとり" loading="eager" decoding="async">
+
+        <!-- コピー（各行を独立した白背景に＝右端が文字数に合わせてでこぼこ、左端は画面端から） -->
+        <p class="fv__copy" style="--d:1.9s">
+          <span class="fv__copy-line">建設の現場にも。</span>
+          <span class="fv__copy-line">環境の変化にも。</span>
+          <span class="fv__copy-line">人の暮らしにも。</span>
+          <span class="fv__copy-line fv__copy-line--accent">そして、<span class="fv__copy-line--box">誰かのそばにも。</span></span>
+        </p>
+
+      </div><!-- /.fv__stage -->
+
+      <!-- 大キャッチコピー：.fv__stage の外に置き、次セクションへ少しはみ出させる -->
+      <img class="fv__catch" style="--d:2.2s"
+           src="assets/images/catchcopy.png" alt="そこに、リョーキ。" loading="eager" decoding="async">
+    </section>
+
+    <!-- ===== コンセプト（FV からそのまま続くコラージュ：写真を敷き詰めた背景＋中央コピー） ===== -->
+    <section class="concept" id="concept" aria-label="リョーキのコンセプト">
+      <!-- FV のコラージュを下へ continue。集英社 採用サイト風に写真を散らし、
+           「街が動き出すところ。～」のボックス（.concept__card）のまわりに配置。
+           カードは前面・上寄り。ボックス下は短い帯ですぐ次セクションへ。
+           ★写真はトリミングしない：CSS で height:auto、ここでは --w（幅）だけ指定して
+             元写真の比率を保つ。位置は 1920×1250 の方眼を目安に % 指定。
+           ★枚数は絞って 14 枚（テーマごとに 1〜2 枚ずつ）。 -->
+      <div class="concept__grid">
+        <!-- 上段：FV から地続き -->
+        <img style="--l:2%;  --t:1%;   --w:19%; --z:1; --d:0s"
+             src="assets/images/fv/env-crusher.jpg" alt="環境機器（クラッシャー）" loading="lazy" decoding="async">
+        <img style="--l:26%; --t:0;    --w:19%; --z:2; --d:.06s"
+             src="assets/images/fv/people-phone.jpg" alt="配車の受付" loading="lazy" decoding="async">
+        <img style="--l:49%; --t:0;    --w:22%; --z:1; --d:.05s"
+             src="assets/images/fv/welfare-warehouse.jpg" alt="福祉用具の倉庫" loading="lazy" decoding="async">
+        <img style="--l:75%; --t:1%;   --w:25%; --z:1; --d:.12s"
+             src="assets/images/fv/site.jpg" alt="夕暮れの建設現場と重機" loading="lazy" decoding="async">
+        <!-- カード左 -->
+        <img style="--l:3%;  --t:23%;  --w:22%; --z:2; --d:.20s"
+             src="assets/images/fv/crowd.jpg" alt="雑踏の中に立つ人" loading="lazy" decoding="async">
+        <img style="--l:2%;  --t:41%;  --w:22%; --z:2; --d:.28s"
+             src="assets/images/fv/welfare-maint.jpg" alt="福祉用具のメンテナンス" loading="lazy" decoding="async">
+        <img style="--l:1%;  --t:58%;  --w:23%; --z:2; --d:.38s"
+             src="assets/images/fv/const-excavator.jpg" alt="夕暮れの油圧ショベル" loading="lazy" decoding="async">
+        <!-- カード右 -->
+        <img style="--l:76%; --t:22%;  --w:24%; --z:2; --d:.24s"
+             src="assets/images/fv/people-inspect.jpg" alt="機械の点検" loading="lazy" decoding="async">
+        <img style="--l:76%; --t:41%;  --w:24%; --z:3; --d:.34s"
+             src="assets/images/fv/family.jpg" alt="河川敷を歩く家族" loading="lazy" decoding="async">
+        <img style="--l:75%; --t:59%;  --w:25%; --z:2; --d:.44s"
+             src="assets/images/fv/env-attach.jpg" alt="解体アタッチメント" loading="lazy" decoding="async">
+        <!-- カード下：短い帯 → すぐ次セクションへ -->
+        <img style="--l:12%; --t:70%;  --w:22%; --z:2; --d:.48s"
+             src="assets/images/fv/const-training.jpg" alt="建機オペレーターの研修" loading="lazy" decoding="async">
+        <img style="--l:33%; --t:69%;  --w:21%; --z:2; --d:.50s"
+             src="assets/images/fv/people-team.jpg" alt="リョーキの社員" loading="lazy" decoding="async">
+        <img style="--l:53%; --t:70%;  --w:23%; --z:2; --d:.52s"
+             src="assets/images/fv/const-cranes.jpg" alt="都市の建設現場のクレーン" loading="lazy" decoding="async">
+        <img style="--l:36%; --t:53%;  --w:20%; --z:2; --d:.46s"
+             src="assets/images/fv/const-steel.jpg" alt="鉄骨造の建設現場" loading="lazy" decoding="async">
+      </div>
+
+      <div class="concept__card">
+        <p class="concept__lead">
+          <span>街が動き出すところ。</span>
+          <span>新しい循環が生まれるところ。</span>
+          <span>誰かの暮らしが、前へ進むところ。</span>
+        </p>
+        <p class="concept__body">
+          気づかないだけで、<br>
+          社会のさまざまな<b>そこ</b>に、<br>
+          リョーキはいます。
+        </p>
+        <p class="concept__body concept__question">リョーキって、何だろう。</p>
+        <p class="concept__body concept__answer">その答えを、少しだけ。</p>
+      </div>
+    </section>
+
+    <!-- ===== スタッキング区間（#soko は通常スクロール／右の吹き出しは sticky。#liken だけが画面に固定→かぶさる） ===== -->
+    <div class="stack">
+
+    <!-- ===== そこ にいるリョーキ ===== -->
+    <section class="soko section-pad" id="soko" data-reveal aria-label="そこにいるリョーキ">
+      <div class="soko__inner">
+        <div class="soko__text">
+          <h2 class="lead-head"><span class="lead-head__box">必要なところ</span> に、<br>リョーキがいる。</h2>
+          <p class="soko__body">
+            事業は違っていても、<br>
+            リョーキが関わっている場面には、共通するものがあります。
+          </p>
+          <div class="soko__set soko__set--build">
+            <div class="soko__set-row">
+              <p class="soko__set-line">何かが動き出そうとしているところ。</p>
+              <img class="soko__set-photo" src="assets/images/soko/item-build.png" alt="" aria-hidden="true">
+            </div>
+            <p class="soko__set-label">建設機器レンタル事業</p>
+          </div>
+          <div class="soko__set soko__set--env">
+            <p class="soko__set-line">何かが生まれ変わろうとしているところ。</p>
+            <div class="soko__set-row">
+              <img class="soko__set-photo" src="assets/images/soko/item-env.png" alt="" aria-hidden="true">
+              <p class="soko__set-label">環境機器事業</p>
+            </div>
+          </div>
+          <div class="soko__set soko__set--welfare">
+            <p class="soko__set-line">誰かの暮らしが前へ進もうとしているところ。</p>
+            <div class="soko__set-row">
+              <p class="soko__set-label">福祉用具レンタル事業</p>
+              <img class="soko__set-photo" src="assets/images/soko/item-welfare.png" alt="" aria-hidden="true">
+            </div>
+          </div>
+          <p class="soko__body">
+            社会や人の「必要」に応え、<br>
+            見えないところから、その動きを支えている。
+          </p>
+          <p class="soko__body soko__body--em">それが、リョーキです。</p>
+        </div>
+
+        <ul class="soko__bubbles" aria-label="リョーキの3つの顔">
+          <li>
+            <button type="button" class="bubble bubble--build" data-modal="modal-build" aria-haspopup="dialog">
+              <svg class="bubble__shape" viewBox="0 0 359 217" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M82.8983 179.837C37.4838 179.837 0.667969 143.022 0.667969 97.6072V90.2532C0.667969 40.7772 40.7762 0.668945 90.2522 0.668945H268.084C317.56 0.668945 357.668 40.7772 357.668 90.2532C357.668 139.729 317.56 179.837 268.084 179.837H148.415" stroke="currentColor" stroke-width="1.33708"/>
+                <path d="M148.415 179.837L89.918 216.272" stroke="currentColor" stroke-width="1.33708"/>
+              </svg>
+              <img class="bubble__click" src="assets/images/soko/click.svg" alt="" aria-hidden="true">
+              <span class="bubble__label">リョーキ＝建設？</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="bubble bubble--env" data-modal="modal-env" aria-haspopup="dialog">
+              <svg class="bubble__shape" viewBox="0 0 287 287" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M236.662 250.389C211.635 272.234 178.896 285.467 143.067 285.467C64.4221 285.467 0.667969 221.713 0.667969 143.068C0.667969 64.4231 64.4221 0.668945 143.067 0.668945C221.712 0.668945 285.466 64.4231 285.466 143.068C285.466 176.467 273.967 207.181 254.713 231.466" stroke="currentColor" stroke-width="1.33708"/>
+                <path d="M237.332 248.696L265.411 276.775" stroke="currentColor" stroke-width="1.33708"/>
+              </svg>
+              <img class="bubble__click" src="assets/images/soko/click.svg" alt="" aria-hidden="true">
+              <span class="bubble__label">リョーキ＝環境？</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="bubble bubble--welfare" data-modal="modal-welfare" aria-haspopup="dialog">
+              <svg class="bubble__shape" viewBox="0 0 313 239" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M157.269 206.786L312.207 191.263V82.5979L157.269 0.713867L0.667969 42.6804V152.454L68.2975 220.092H130.384L167.803 237.819" stroke="currentColor" stroke-width="1.33708"/>
+              </svg>
+              <img class="bubble__click" src="assets/images/soko/click.svg" alt="" aria-hidden="true">
+              <span class="bubble__label">リョーキ＝福祉？</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 吹き出しクリックで開くモーダル（フルスクリーン・ダーク） -->
+      <dialog class="modal modal--story" id="modal-build">
+        <div class="modal__inner">
+          <button type="button" class="modal__close">閉じる <span aria-hidden="true">×</span></button>
+          <img class="modal__photo" src="assets/images/soko/modal_1.png" alt="" aria-hidden="true">
+          <div class="modal__body-wrap">
+            <p class="modal__heading">リョーキ＝建設？</p>
+            <p class="modal__lead">
+              「リョーキ＝建設？」<br>
+              あなたは、そんな印象を持ったかもしれません。
+            </p>
+            <p class="modal__text">
+              その印象は、間違っていません。<br>
+              リョーキは、建設機械のレンタル事業を通じて、<br>
+              街が動き出す、その「現場」に関わっています。
+            </p>
+            <p class="modal__text">
+              道を拓き、営みをつくり、<br>
+              人が集まり、新しい日常が始まっていくために。
+            </p>
+            <p class="modal__text">
+              リョーキが支えているのは、<br>
+              機械そのものだけではなく、<br>
+              人が働き、街が動き出す、<br>
+              その現場なのです。
+            </p>
+            <p class="modal__text modal__text--em">さあ、街よ、動け。</p>
+          </div>
+          <img class="modal__sub" src="assets/images/soko/modal_1_sub.png" alt="" aria-hidden="true">
+          <img class="modal__copy" src="assets/images/soko/modal_copy_1.png" alt="そこに、リョーキ。">
+        </div>
+      </dialog>
+
+      <dialog class="modal modal--story" id="modal-env">
+        <div class="modal__inner">
+          <button type="button" class="modal__close">閉じる <span aria-hidden="true">×</span></button>
+          <img class="modal__photo" src="assets/images/soko/modal_2.png" alt="" aria-hidden="true">
+          <div class="modal__body-wrap">
+            <p class="modal__heading">リョーキ＝環境？</p>
+            <p class="modal__lead">
+              「リョーキ＝環境？」<br>
+              あなたは、そんな印象を持ったかもしれません。
+            </p>
+            <p class="modal__text">
+              その印象は、間違っていません。<br>
+              リョーキは、環境機器を通じて、<br>
+              循環が生まれる、その「変化」に関わっています。
+            </p>
+            <p class="modal__text">
+              使われたものが、次の価値へ向かう。<br>
+              素材が変わり、新しい循環が始まっていく。
+            </p>
+            <p class="modal__text">
+              リョーキが支えているのは、<br>
+              環境機器そのものだけではなく、<br>
+              素材が循環し次の価値へ生まれていく、<br>
+              その変化なのです。
+            </p>
+            <p class="modal__text modal__text--em">さあ、循環を生みだそう。</p>
+          </div>
+          <img class="modal__sub" src="assets/images/soko/modal_2_sub.png" alt="" aria-hidden="true">
+          <img class="modal__copy" src="assets/images/soko/modal_copy_2.png" alt="そこに、リョーキ。">
+        </div>
+      </dialog>
+
+      <dialog class="modal modal--story" id="modal-welfare">
+        <div class="modal__inner">
+          <button type="button" class="modal__close">閉じる <span aria-hidden="true">×</span></button>
+          <img class="modal__photo" src="assets/images/soko/modal_3.png" alt="" aria-hidden="true">
+          <div class="modal__body-wrap">
+            <p class="modal__heading">リョーキ＝福祉？</p>
+            <p class="modal__lead">
+              「リョーキ＝福祉？」<br>
+              あなたは、そんな印象を持ったかもしれません。
+            </p>
+            <p class="modal__text">
+              その印象は、間違っていません。<br>
+              リョーキは、福祉用具のレンタル事業を通じて、<br>
+              毎日が前へ進む、その「瞬間」に関わっています。
+            </p>
+            <p class="modal__text">
+              行ってみたい場所がある。会いたい人がいる。<br>
+              もう少し、自分の力で前へ進みたい。
+            </p>
+            <p class="modal__text">
+              福祉用具という支えがあることで、<br>
+              暮らしは少しずつ動き始めます。
+            </p>
+            <p class="modal__text">
+              リョーキが支えているのは、<br>
+              福祉用具そのものだけではなく、<br>
+              人の暮らしと心が、前へ進んでいく、<br>
+              その瞬間なのです。
+            </p>
+            <p class="modal__text modal__text--em">さあ、心よ、前を向け。</p>
+          </div>
+          <img class="modal__sub" src="assets/images/soko/modal_3_sub.png" alt="" aria-hidden="true">
+          <img class="modal__copy" src="assets/images/soko/modal_copy_3.png" alt="そこに、リョーキ。">
+        </div>
+      </dialog>
+    </section>
+
+    <!-- ===== リョーキという会社を、人にたとえると ===== -->
+    <section class="liken section-pad" id="liken" data-reveal aria-label="リョーキという会社を、人にたとえると">
+      <div class="liken__inner">
+        <div class="liken__photo">
+          <img src="assets/images/liken-crowd.jpg" alt="雑踏の中に静かに立つ人" loading="lazy" decoding="async">
+        </div>
+        <div class="liken__text">
+          <h2 class="liken__head">リョーキという会社を、<br>人にたとえると</h2>
+          <p class="liken__body">こんな感じです。</p>
+          <p class="liken__body">目立ちたがりではない。<br>でも、必要とされたら、ちゃんと動く。</p>
+          <p class="liken__body">派手ではない。<br>でも、できることを考える。</p>
+          <p class="liken__body">困っている人がいたら、<br>つい手を貸したくなる。</p>
+          <p class="liken__body">誰かの役に立つことを、<br>いつも、大切にしている。</p>
+          <p class="liken__body">たぶん、まじめで、少し世話焼き。<br>そんな性格の会社です。</p>
+        </div>
+      </div>
+    </section>
+
+    </div><!-- /.stack ここでスティッキー解除。以降（#more/#need/クロージング/フッター）は通常フロー -->
+
+    <!-- ===== More Information（外部サイト誘導 / ダーク） ===== -->
+    <section class="more" id="more" data-reveal aria-label="More Information">
+      <video class="more__bg" autoplay muted loop playsinline preload="auto"
+             poster="assets/images/fv/crowd.jpg" aria-hidden="true" tabindex="-1">
+        <source src="assets/video/more-bg.mp4" type="video/mp4">
+      </video>
+      <div class="more__inner">
+        <p class="more__copy">
+          「リョーキ」という名前が少し気になったあなたへ。<br><br>
+          自分が、何を支える仕事をするのか。<br>
+          誰の役に立つ仕事をするのか。<br>
+          どんな姿勢で働くのか。<br><br>
+          リョーキには、<br>
+          建設・環境・福祉というフィールドがあります。<br>
+          けれど、そのどこにいても、<br>
+          誰かの「必要」に応える仕事があります。<br>
+          あなたの「そこ」はどこだろう。<br><br>
+          街が動き出す、その現場。<br>
+          循環が生まれる、その変化。<br>
+          毎日が前に進む、その瞬間。<br><br>
+          そのひとつひとつを、<br>
+          支えている人たちがいます。<br><br>
+          どんな仕事があるのか。<br>
+          どんな人が働いているのか。<br>
+          どんな毎日が待っているのか。<br><br>
+          ここから先は、<br>
+          もっと具体的なリョーキを見てみてください。
+        </p>
+        <p class="more__label">More Information</p>
+        <div class="more__btns">
+          <a class="more__btn" href="#" target="_blank" rel="noopener">
+            <span class="more__btn-sub">株式会社リョーキ</span>
+            <span class="more__btn-main">コーポレートサイト</span>
+          </a>
+          <a class="more__btn" href="#" target="_blank" rel="noopener">
+            <span class="more__btn-sub">株式会社リョーキ</span>
+            <span class="more__btn-main">採用サイト</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 必要なところに、いる。 ===== -->
+    <section class="need" id="need" aria-label="必要なところに、いる">
+      <div class="need__collage" aria-hidden="true">
+        <img src="assets/images/fv/recycle.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/fv/const-cranes.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/fv/crowd.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/fv/family.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/fv/env-shredder.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="need__text" data-reveal>
+        <p class="need__lead">必要なところに、いる。<br>必要とされたら、動く。</p>
+        <p class="need__list"><span>街にも。</span><span>循環にも。</span><span>暮らしにも。</span></p>
+      </div>
+    </section>
+
+    <!-- ===== クロージング（帯コラージュ＋筆文字） ===== -->
+    <section class="closing" aria-hidden="true">
+      <div class="closing__strip">
+        <img src="assets/images/closing-1-river.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/closing-2-const.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/closing-3-recycle.jpg" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/closing-4-crowd.jpg" alt="" loading="lazy" decoding="async">
+      </div>
+      <img class="closing__catch" src="assets/images/closing-catch-white.png" alt="そこに、リョーキ。" loading="lazy" decoding="async">
+    </section>
+
+  </main>
+
+  <!-- ===== フッター ===== -->
+  <footer class="site-footer">
+    <a href="#hero" class="site-footer__logo" aria-label="株式会社リョーキ">
+      <img src="assets/images/logo.png" alt="株式会社リョーキ" width="219" height="54">
+    </a>
+    <p class="site-footer__copy">&copy; <span id="year">2020</span> RYOKI CO., LTD.</p>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
