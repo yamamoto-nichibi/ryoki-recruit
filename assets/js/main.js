@@ -47,10 +47,16 @@
 
   /* --- 3a. #soko → #liken のスタッキング演出：#soko が画面いっぱいになったところで
      いったん画面に固定（pin）して止め、止まっている間に #liken を下から重ねて覆う
-     （GSAP ScrollTrigger）。#soko・#liken とも GSAP 自身の pin 機構（スペーサーで
-     高さを常に一定に保つ仕組み）に任せる。手動で position を付け替えると、その瞬間に
-     .stack の高さが変わってスクロール量とズレ、ガタつきや急なジャンプの原因になるため、
-     onEnter/onLeave での手動切り替えは行わない。 */
+     （GSAP ScrollTrigger）。
+
+     #soko・#liken を別々に GSAP の pin で二重にpinしていたところ、ヘッドレスbrowserで
+     実測したところ、二つのpinがまったく同じピクセルで同時に解除される瞬間に内部状態が
+     一瞬 progress:0 に巻き戻り、#liken が非表示状態に戻る（＝白画面のフラッシュ）不具合が
+     確認できた。あわせて、#soko側で確保していたスクロール量（1ビューポート分）と
+     #liken の実際の高さがわずかにズレており（ガタつきの一因）。
+     そのため pin は #soko の1つだけにし、#liken は onEnter/onLeave 等で手動で
+     position を切り替える方式に戻す。今回は #liken の実測の高さをそのまま確保量
+     （end）に使うことで、#liken をフローから外す瞬間の高さのズレをなくした。 */
   if (window.gsap && window.ScrollTrigger && !document.documentElement.classList.contains("fv-static")) {
     var sokoEl = document.getElementById("soko");
     var likenEl = document.getElementById("liken");
@@ -59,40 +65,33 @@
     if (sokoEl && likenEl && wideEnough && okMotion) {
       gsap.registerPlugin(ScrollTrigger);
 
-      /* #soko を画面に固定して止める */
+      var showLikenOverlay = function () {
+        gsap.set(likenEl, { position: "fixed", top: 0, left: 0, right: 0 });
+      };
+      var hideLikenOverlay = function () {
+        gsap.set(likenEl, { clearProps: "position,top,left,right,transform" });
+      };
+
       ScrollTrigger.create({
         trigger: sokoEl,
         start: "bottom bottom",
-        end: "+=100%",
+        /* 関数で返すことで refresh() のたびに #liken の実際の高さを測り直す
+           （画像読み込みなどで高さが変わっても常に一致させるため）。 */
+        end: function () {
+          return "+=" + Math.ceil(likenEl.getBoundingClientRect().height);
+        },
         pin: true,
         pinSpacing: true,
         scrub: true,
         anticipatePin: 1,
+        onEnter: showLikenOverlay,
+        onEnterBack: showLikenOverlay,
+        onLeave: hideLikenOverlay,
+        onLeaveBack: hideLikenOverlay,
+        onUpdate: function (self) {
+          gsap.set(likenEl, { yPercent: 100 - self.progress * 100 });
+        },
       });
-
-      /* 同じ区間で #liken 自身も GSAP の pin に任せつつ、下から重なるように yPercent を連動させる。
-         pinSpacing は #soko 側ですでに確保済みなので false にして二重に確保しない。
-         pinType: "fixed" を明示し、pin自体が内部で使う transform と yPercent の
-         transform が同じプロパティを取り合って衝突する（＝位置がズレる／白く抜ける／
-         ガタつく原因だった）のを避ける。 */
-      gsap.fromTo(
-        likenEl,
-        { yPercent: 100 },
-        {
-          yPercent: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sokoEl,
-            start: "bottom bottom",
-            end: "+=100%",
-            scrub: true,
-            pin: likenEl,
-            pinType: "fixed",
-            pinSpacing: false,
-            anticipatePin: 1,
-          },
-        }
-      );
 
       /* 画像読み込み等でレイアウト高さが後から変わるとpin開始位置がズレて
          スクロール途中でジャンプするため、読み込み完了後に必ず測り直す。 */
