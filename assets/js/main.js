@@ -45,6 +45,31 @@
     });
   }
 
+  /* --- 3a. #soko → #liken のスタッキング演出：#liken が下から覆いかぶさる間、
+     #soko を少し縮小＆減光して奥へ沈むように見せる（GSAP ScrollTrigger）。
+     #liken 自体の sticky での「かぶさって留まる」挙動は CSS 側のまま変更しない。 */
+  if (window.gsap && window.ScrollTrigger && !document.documentElement.classList.contains("fv-static")) {
+    var sokoEl = document.getElementById("soko");
+    var likenEl = document.getElementById("liken");
+    var wideEnough = window.matchMedia("(min-width: 901px)").matches;
+    var okMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (sokoEl && likenEl && wideEnough && okMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.set(sokoEl, { transformOrigin: "50% 100%" });
+      gsap.to(sokoEl, {
+        scale: 0.94,
+        filter: "brightness(0.85)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: sokoEl,
+          start: "bottom bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+  }
+
   /* --- 3b. #more の背景動画：動きを減らす設定なら停止し poster を見せる --- */
   var moreVideo = document.querySelector(".more__bg");
   if (moreVideo) {
