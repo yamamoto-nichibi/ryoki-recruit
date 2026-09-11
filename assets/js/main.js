@@ -71,7 +71,10 @@
       });
 
       /* 同じ区間で #liken 自身も GSAP の pin に任せつつ、下から重なるように yPercent を連動させる。
-         pinSpacing は #soko 側ですでに確保済みなので false にして二重に確保しない。 */
+         pinSpacing は #soko 側ですでに確保済みなので false にして二重に確保しない。
+         pinType: "fixed" を明示し、pin自体が内部で使う transform と yPercent の
+         transform が同じプロパティを取り合って衝突する（＝位置がズレる／白く抜ける／
+         ガタつく原因だった）のを避ける。 */
       gsap.fromTo(
         likenEl,
         { yPercent: 100 },
@@ -84,6 +87,7 @@
             end: "+=100%",
             scrub: true,
             pin: likenEl,
+            pinType: "fixed",
             pinSpacing: false,
             anticipatePin: 1,
           },
