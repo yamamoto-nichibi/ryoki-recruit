@@ -47,8 +47,10 @@
 
   /* --- 3a. #soko → #liken のスタッキング演出：#soko が画面いっぱいになったところで
      いったん画面に固定（pin）して止め、止まっている間に #liken を下から重ねて覆う
-     （GSAP ScrollTrigger）。かぶさり終わったら #soko の固定を解除し、#liken は
-     CSS の position: sticky に処理を引き継いで通常どおり画面上端に留まる。 */
+     （GSAP ScrollTrigger）。#soko・#liken とも GSAP 自身の pin 機構（スペーサーで
+     高さを常に一定に保つ仕組み）に任せる。手動で position を付け替えると、その瞬間に
+     .stack の高さが変わってスクロール量とズレ、ガタつきや急なジャンプの原因になるため、
+     onEnter/onLeave での手動切り替えは行わない。 */
   if (window.gsap && window.ScrollTrigger && !document.documentElement.classList.contains("fv-static")) {
     var sokoEl = document.getElementById("soko");
     var likenEl = document.getElementById("liken");
@@ -57,13 +59,7 @@
     if (sokoEl && likenEl && wideEnough && okMotion) {
       gsap.registerPlugin(ScrollTrigger);
 
-      var likenAsOverlay = function () {
-        gsap.set(likenEl, { position: "fixed", top: 0, left: 0, right: 0 });
-      };
-      var likenReleaseOverlay = function () {
-        gsap.set(likenEl, { clearProps: "position,top,left,right,transform" });
-      };
-
+      /* #soko を画面に固定して止める */
       ScrollTrigger.create({
         trigger: sokoEl,
         start: "bottom bottom",
@@ -71,13 +67,33 @@
         pin: true,
         pinSpacing: true,
         scrub: true,
-        onEnter: likenAsOverlay,
-        onEnterBack: likenAsOverlay,
-        onLeave: likenReleaseOverlay,
-        onLeaveBack: likenReleaseOverlay,
-        onUpdate: function (self) {
-          gsap.set(likenEl, { yPercent: 100 - self.progress * 100 });
-        },
+        anticipatePin: 1,
+      });
+
+      /* 同じ区間で #liken 自身も GSAP の pin に任せつつ、下から重なるように yPercent を連動させる。
+         pinSpacing は #soko 側ですでに確保済みなので false にして二重に確保しない。 */
+      gsap.fromTo(
+        likenEl,
+        { yPercent: 100 },
+        {
+          yPercent: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sokoEl,
+            start: "bottom bottom",
+            end: "+=100%",
+            scrub: true,
+            pin: likenEl,
+            pinSpacing: false,
+            anticipatePin: 1,
+          },
+        }
+      );
+
+      /* 画像読み込み等でレイアウト高さが後から変わるとpin開始位置がズレて
+         スクロール途中でジャンプするため、読み込み完了後に必ず測り直す。 */
+      window.addEventListener("load", function () {
+        ScrollTrigger.refresh();
       });
     }
   }
