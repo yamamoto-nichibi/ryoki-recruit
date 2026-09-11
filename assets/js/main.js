@@ -45,9 +45,10 @@
     });
   }
 
-  /* --- 3a. #soko → #liken のスタッキング演出：#liken が下から覆いかぶさる間、
-     #soko を少し縮小＆減光して奥へ沈むように見せる（GSAP ScrollTrigger）。
-     #liken 自体の sticky での「かぶさって留まる」挙動は CSS 側のまま変更しない。 */
+  /* --- 3a. #soko → #liken のスタッキング演出：#soko が画面いっぱいになったところで
+     いったん画面に固定（pin）して止め、止まっている間に #liken を下から重ねて覆う
+     （GSAP ScrollTrigger）。かぶさり終わったら #soko の固定を解除し、#liken は
+     CSS の position: sticky に処理を引き継いで通常どおり画面上端に留まる。 */
   if (window.gsap && window.ScrollTrigger && !document.documentElement.classList.contains("fv-static")) {
     var sokoEl = document.getElementById("soko");
     var likenEl = document.getElementById("liken");
@@ -55,16 +56,27 @@
     var okMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (sokoEl && likenEl && wideEnough && okMotion) {
       gsap.registerPlugin(ScrollTrigger);
-      gsap.set(sokoEl, { transformOrigin: "50% 100%" });
-      gsap.to(sokoEl, {
-        scale: 0.94,
-        filter: "brightness(0.85)",
-        ease: "none",
-        scrollTrigger: {
-          trigger: sokoEl,
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: true,
+
+      var likenAsOverlay = function () {
+        gsap.set(likenEl, { position: "fixed", top: 0, left: 0, right: 0 });
+      };
+      var likenReleaseOverlay = function () {
+        gsap.set(likenEl, { clearProps: "position,top,left,right,transform" });
+      };
+
+      ScrollTrigger.create({
+        trigger: sokoEl,
+        start: "bottom bottom",
+        end: "+=100%",
+        pin: true,
+        pinSpacing: true,
+        scrub: true,
+        onEnter: likenAsOverlay,
+        onEnterBack: likenAsOverlay,
+        onLeave: likenReleaseOverlay,
+        onLeaveBack: likenReleaseOverlay,
+        onUpdate: function (self) {
+          gsap.set(likenEl, { yPercent: 100 - self.progress * 100 });
         },
       });
     }
