@@ -885,7 +885,7 @@ body {
   position: sticky;
   top: clamp(3rem, 8vh, 5.5rem);
   order: 1;
-  justify-self: start;
+  justify-self: center;
   width: min(100%, 31.25rem);
   aspect-ratio: 5 / 4;
   list-style: none;
