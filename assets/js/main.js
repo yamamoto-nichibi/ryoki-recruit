@@ -49,14 +49,16 @@
      いったん画面に固定（pin）して止め、止まっている間に #liken を下から重ねて覆う
      （GSAP ScrollTrigger）。
 
-     #soko・#liken を別々に GSAP の pin で二重にpinしていたところ、ヘッドレスbrowserで
-     実測したところ、二つのpinがまったく同じピクセルで同時に解除される瞬間に内部状態が
-     一瞬 progress:0 に巻き戻り、#liken が非表示状態に戻る（＝白画面のフラッシュ）不具合が
-     確認できた。あわせて、#soko側で確保していたスクロール量（1ビューポート分）と
-     #liken の実際の高さがわずかにズレており（ガタつきの一因）。
-     そのため pin は #soko の1つだけにし、#liken は onEnter/onLeave 等で手動で
-     position を切り替える方式に戻す。今回は #liken の実測の高さをそのまま確保量
-     （end）に使うことで、#liken をフローから外す瞬間の高さのズレをなくした。 */
+     これまで #liken の固定/解除は onEnter/onLeave で自前実装していたが、それは
+     GSAP本体のpin機能（固定とスペーサーの調整を1フレームの中で原子的に行う
+     仕組み）を手作業で再現しようとしていたに過ぎず、切り替えの瞬間がGSAP内部の
+     更新タイミングと完全には同期しきらず、境界で一瞬戻る不具合の原因になっていた。
+     そこで #liken も自前で切り替えず、GSAP本体のpinにそのまま任せる。
+
+     #soko・#liken を別々にpinすると、両者が完全に同じピクセルで同時に解除される
+     瞬間にGSAP内部の再計算が衝突し、一瞬 progress が0に巻き戻る不具合をヘッドレス
+     browserでの実測で確認したため、#liken側の解除位置をわずかに（数px）後ろへ
+     ずらし、2つのpinが同時に解除されないようにしている。 */
   if (window.gsap && window.ScrollTrigger && !document.documentElement.classList.contains("fv-static")) {
     var sokoEl = document.getElementById("soko");
     var likenEl = document.getElementById("liken");
@@ -65,54 +67,45 @@
     if (sokoEl && likenEl && wideEnough && okMotion) {
       gsap.registerPlugin(ScrollTrigger);
 
-      /* onEnter/onEnterBack で position を切り替えると同時に、その瞬間の
-         progress に合わせた yPercent も同じ呼び出しでまとめて設定する。
-         切り替えとその後の最初の onUpdate が別ティックにずれると、
-         一瞬だけ古い位置で描画されて「戻る」ように見えるフラッシュの
-         原因になるため。 */
-      var showLikenOverlay = function (self) {
-        gsap.set(likenEl, {
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          yPercent: 100 - self.progress * 100,
-        });
-      };
-      /* 解除後は CSS の position: sticky に戻さず static にする。
-         sticky に戻すと、#liken の実際の高さが1ビューポート分よりわずかに
-         大きいぶん、そこでもう一度 sticky が効いて短く再固定されてしまう
-         （二重の停止＝戻ったように見える一因）ため。 */
-      var hideLikenOverlay = function (self) {
-        gsap.set(likenEl, {
-          position: "static",
-          clearProps: "top,left,right",
-          yPercent: 100 - self.progress * 100,
-        });
+      var likenHeight = function () {
+        return Math.ceil(likenEl.getBoundingClientRect().height);
       };
 
+      /* #soko を画面に固定して止める */
       ScrollTrigger.create({
         trigger: sokoEl,
         start: "bottom bottom",
-        /* 関数で返すことで refresh() のたびに #liken の実際の高さを測り直す
-           （画像読み込みなどで高さが変わっても常に一致させるため）。 */
         end: function () {
-          return "+=" + Math.ceil(likenEl.getBoundingClientRect().height);
+          return "+=" + likenHeight();
         },
         pin: true,
         pinSpacing: true,
         scrub: true,
-        /* anticipatePin は高速スクロール向けの先読み補正だが、今回のように
-           別要素を手動でposition切り替えする構成だと、先読みしたぶんを
-           後から補正する形で一瞬「戻る」ような巻き戻りを起こしやすいため外す。 */
-        onEnter: showLikenOverlay,
-        onEnterBack: showLikenOverlay,
-        onLeave: hideLikenOverlay,
-        onLeaveBack: hideLikenOverlay,
-        onUpdate: function (self) {
-          gsap.set(likenEl, { yPercent: 100 - self.progress * 100 });
-        },
       });
+
+      /* 同じ区間で #liken もGSAP本体のpinで固定しつつ、下から重なるように
+         yPercentを連動させる。pinType:"fixed" は、pinが内部で使うtransformと
+         yPercentのtransformが同じプロパティを取り合って衝突するのを避けるため。
+         end に +4px の余白を持たせ、#soko側のpin解除と完全に同時にならないようにする。 */
+      gsap.fromTo(
+        likenEl,
+        { yPercent: 100 },
+        {
+          yPercent: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sokoEl,
+            start: "bottom bottom",
+            end: function () {
+              return "+=" + (likenHeight() + 4);
+            },
+            scrub: true,
+            pin: likenEl,
+            pinType: "fixed",
+            pinSpacing: false,
+          },
+        }
+      );
 
       /* 画像読み込み等でレイアウト高さが後から変わるとpin開始位置がズレて
          スクロール途中でジャンプするため、読み込み完了後に必ず測り直す。 */
