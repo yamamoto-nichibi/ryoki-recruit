@@ -65,11 +65,30 @@
     if (sokoEl && likenEl && wideEnough && okMotion) {
       gsap.registerPlugin(ScrollTrigger);
 
-      var showLikenOverlay = function () {
-        gsap.set(likenEl, { position: "fixed", top: 0, left: 0, right: 0 });
+      /* onEnter/onEnterBack で position を切り替えると同時に、その瞬間の
+         progress に合わせた yPercent も同じ呼び出しでまとめて設定する。
+         切り替えとその後の最初の onUpdate が別ティックにずれると、
+         一瞬だけ古い位置で描画されて「戻る」ように見えるフラッシュの
+         原因になるため。 */
+      var showLikenOverlay = function (self) {
+        gsap.set(likenEl, {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          yPercent: 100 - self.progress * 100,
+        });
       };
-      var hideLikenOverlay = function () {
-        gsap.set(likenEl, { clearProps: "position,top,left,right,transform" });
+      /* 解除後は CSS の position: sticky に戻さず static にする。
+         sticky に戻すと、#liken の実際の高さが1ビューポート分よりわずかに
+         大きいぶん、そこでもう一度 sticky が効いて短く再固定されてしまう
+         （二重の停止＝戻ったように見える一因）ため。 */
+      var hideLikenOverlay = function (self) {
+        gsap.set(likenEl, {
+          position: "static",
+          clearProps: "top,left,right",
+          yPercent: 100 - self.progress * 100,
+        });
       };
 
       ScrollTrigger.create({
@@ -83,7 +102,9 @@
         pin: true,
         pinSpacing: true,
         scrub: true,
-        anticipatePin: 1,
+        /* anticipatePin は高速スクロール向けの先読み補正だが、今回のように
+           別要素を手動でposition切り替えする構成だと、先読みしたぶんを
+           後から補正する形で一瞬「戻る」ような巻き戻りを起こしやすいため外す。 */
         onEnter: showLikenOverlay,
         onEnterBack: showLikenOverlay,
         onLeave: hideLikenOverlay,
