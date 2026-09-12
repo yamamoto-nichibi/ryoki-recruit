@@ -16,7 +16,9 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  scroll-behavior: smooth;
+  /* GSAP ScrollTrigger のpin/scrubとブラウザ標準のスムーズスクロールが競合し、
+     セクション切り替え中に画面が一瞬戻る（ガタつく）原因になるため auto にする。 */
+  scroll-behavior: auto;
 }
 
 body {
