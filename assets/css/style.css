@@ -333,18 +333,19 @@ body {
     display: none;
   }
 
-  .fv__tile:nth-child(1)  { --l: 0   !important; --t: 0        !important; --w: 50% !important; --h: 16.667% !important; } /* const-cranes   */
-  .fv__tile:nth-child(2)  { --l: 50% !important; --t: 0        !important; --w: 50% !important; --h: 16.667% !important; } /* hq             */
-  .fv__tile:nth-child(4)  { --l: 0   !important; --t: 16.667%  !important; --w: 50% !important; --h: 16.667% !important; } /* const-steel    */
-  .fv__tile:nth-child(5)  { --l: 50% !important; --t: 16.667%  !important; --w: 50% !important; --h: 16.667% !important; } /* crowd          */
-  .fv__tile:nth-child(6)  { --l: 0   !important; --t: 33.333%  !important; --w: 50% !important; --h: 16.667% !important; } /* const-training */
-  .fv__tile:nth-child(7)  { --l: 50% !important; --t: 33.333%  !important; --w: 50% !important; --h: 16.667% !important; } /* family         */
-  .fv__tile:nth-child(9)  { --l: 0   !important; --t: 50%      !important; --w: 50% !important; --h: 16.667% !important; } /* people-inspect */
-  .fv__tile:nth-child(10) { --l: 50% !important; --t: 50%      !important; --w: 50% !important; --h: 16.667% !important; } /* people-talk    */
-  .fv__tile:nth-child(12) { --l: 0   !important; --t: 66.667%  !important; --w: 50% !important; --h: 16.667% !important; } /* people-team    */
-  .fv__tile:nth-child(13) { --l: 50% !important; --t: 66.667%  !important; --w: 50% !important; --h: 16.667% !important; } /* env-shredder   */
-  .fv__tile:nth-child(14) { --l: 0   !important; --t: 83.333%  !important; --w: 50% !important; --h: 16.667% !important; } /* const-truck    */
-  .fv__tile:nth-child(16) { --l: 50% !important; --t: 83.333%  !important; --w: 50% !important; --h: 16.667% !important; } /* people-office  */
+  /* PC 版と同じく、大きさと形の違う写真を重ねて貼ったような非対称の面付けに組み替える */
+  .fv__tile:nth-child(1)  { --l: 0    !important; --t: 0    !important; --w: 60%  !important; --h: 18%  !important; } /* const-cranes   */
+  .fv__tile:nth-child(2)  { --l: 60%  !important; --t: 0    !important; --w: 40%  !important; --h: 18%  !important; } /* hq             */
+  .fv__tile:nth-child(4)  { --l: 0    !important; --t: 18%  !important; --w: 35%  !important; --h: 16%  !important; } /* const-steel    */
+  .fv__tile:nth-child(5)  { --l: 35%  !important; --t: 18%  !important; --w: 32%  !important; --h: 32%  !important; } /* crowd（縦に長い1枚）*/
+  .fv__tile:nth-child(6)  { --l: 67%  !important; --t: 18%  !important; --w: 33%  !important; --h: 16%  !important; } /* const-training */
+  .fv__tile:nth-child(7)  { --l: 67%  !important; --t: 34%  !important; --w: 33%  !important; --h: 16%  !important; } /* family         */
+  .fv__tile:nth-child(9)  { --l: 0    !important; --t: 34%  !important; --w: 35%  !important; --h: 16%  !important; } /* people-inspect */
+  .fv__tile:nth-child(10) { --l: 0    !important; --t: 50%  !important; --w: 38%  !important; --h: 20%  !important; } /* people-talk    */
+  .fv__tile:nth-child(12) { --l: 38%  !important; --t: 50%  !important; --w: 62%  !important; --h: 20%  !important; } /* people-team    */
+  .fv__tile:nth-child(13) { --l: 0    !important; --t: 70%  !important; --w: 26%  !important; --h: 30%  !important; } /* env-shredder   */
+  .fv__tile:nth-child(14) { --l: 26%  !important; --t: 70%  !important; --w: 42%  !important; --h: 30%  !important; } /* const-truck    */
+  .fv__tile:nth-child(16) { --l: 68%  !important; --t: 70%  !important; --w: 32%  !important; --h: 30%  !important; } /* people-office  */
 
   .fv__copy {
     left: 0;
@@ -414,7 +415,7 @@ body {
   left: var(--l, 0);
   top: var(--t, 0);
   width: var(--w, 16%);
-  height: auto;              /* 元写真の比率を維持（トリミングしない）。幅だけで大きさを決める */
+  height: var(--h, auto);    /* PC は auto で元写真の比率を維持。SP は --h を指定してタイル化 */
   margin: 0;
   border: 0;
   background: #eef1f4;
@@ -494,31 +495,44 @@ body {
   .concept__grid { aspect-ratio: 1920 / 2200; }
 }
 
-/* --- スマホ：絶対配置をやめて 2 列のベタ組みで縦に流す --- */
+/* --- スマホ：PC と同じ「大きさと形の違う写真を重ねた」絶対配置コラージュを維持し、
+   中央のカードを写真の上に重ねて載せる（PC のレイアウト思想をそのまま踏襲）。
+   写真は object-fit:cover でタイル化し、8 枚だけ残して余白の破綻を防ぐ。 --- */
 @media (max-width: 640px) {
   .concept { margin-top: -1vh; }
 
   .concept__grid {
-    display: flex;
-    flex-wrap: wrap;
-    aspect-ratio: auto;
+    aspect-ratio: 375 / 620;
   }
 
   .concept__grid img {
-    position: static;
-    width: 50%;
-    height: auto;   /* 元写真の比率のまま */
+    object-fit: cover;
   }
 
+  .concept__grid img:nth-child(2),   /* people-phone       */
+  .concept__grid img:nth-child(3),   /* welfare-warehouse  */
+  .concept__grid img:nth-child(7),   /* const-excavator    */
+  .concept__grid img:nth-child(10),  /* env-attach         */
+  .concept__grid img:nth-child(13),  /* const-cranes       */
+  .concept__grid img:nth-child(14) { /* const-steel        */
+    display: none;
+  }
 
+  .concept__grid img:nth-child(1)  { --l: 0%   !important; --t: 0%   !important; --w: 58% !important; --h: 14% !important; } /* env-crusher    */
+  .concept__grid img:nth-child(4)  { --l: 58%  !important; --t: 0%   !important; --w: 42% !important; --h: 14% !important; } /* site           */
+  .concept__grid img:nth-child(5)  { --l: 0%   !important; --t: 14%  !important; --w: 22% !important; --h: 38% !important; } /* crowd（左・縦長）*/
+  .concept__grid img:nth-child(6)  { --l: 0%   !important; --t: 52%  !important; --w: 22% !important; --h: 34% !important; } /* welfare-maint  */
+  .concept__grid img:nth-child(8)  { --l: 78%  !important; --t: 14%  !important; --w: 22% !important; --h: 30% !important; } /* people-inspect */
+  .concept__grid img:nth-child(9)  { --l: 78%  !important; --t: 44%  !important; --w: 22% !important; --h: 42% !important; } /* family         */
+  .concept__grid img:nth-child(11) { --l: 0%   !important; --t: 86%  !important; --w: 46% !important; --h: 14% !important; } /* const-training */
+  .concept__grid img:nth-child(12) { --l: 54%  !important; --t: 86%  !important; --w: 46% !important; --h: 14% !important; } /* people-team    */
+
+  /* PC と同じく、カードは写真面付けの中央に重ねて載せる（写真の上に文字ボックス） */
   .concept__card,
   .fv-static .concept__card {
-    position: static;
-    width: auto;
-    margin: 0.5rem 0.75rem 1.5rem;
-    opacity: 1;
-    transform: none !important;
-    transition: none;
+    top: 50%;
+    width: min(84vw, 24rem);
+    padding: 1.5rem 1.25rem;
   }
 }
 
