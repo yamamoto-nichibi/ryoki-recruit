@@ -1368,7 +1368,8 @@ body {
 @media (max-width: 900px) {
   .liken__inner { grid-template-columns: 1fr; }
   .liken__photo { position: static; max-width: 28.75rem; }
-  .soko__inner { display: block; }
+  /* スマホはモーダルボタン（吹き出し）を本文より先に表示する（order:1/2 は base 側で指定済み） */
+  .soko__inner { display: flex; flex-direction: column; align-items: center; }
 
   /* 画面が狭いと左にはみ出すため、ペットボトルは右横に戻す */
   .soko__set--env .soko__set-photo {
@@ -1382,13 +1383,13 @@ body {
   .more,
   .need { min-height: 0; }
 
-  /* 吹き出しは本文の下に回し、絶対配置をやめて横並び */
+  /* 吹き出しは本文の上に回し、絶対配置をやめて横並び */
   .soko__bubbles {
     position: static;
     width: 100%;
     max-width: 28.75rem;
     aspect-ratio: auto;
-    margin: 2.5rem auto 0;
+    margin: 0 auto 2.5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
