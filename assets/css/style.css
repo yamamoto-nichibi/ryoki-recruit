@@ -806,6 +806,9 @@ body {
   margin-right: 0.375rem;
 }
 
+/* スマホ版のみ：吹き出しセクションの先頭に出す見出し（PC では非表示） */
+.soko__bubbles-head { display: none; }
+
 /* --- そこ にいるリョーキ --- */
 .soko { padding-top: clamp(6rem, 20vh, 14rem); padding-bottom: clamp(6rem, 20vh, 14rem); }
 .soko__inner {
@@ -1370,6 +1373,7 @@ body {
   .liken__photo { position: static; max-width: 28.75rem; }
   /* スマホはモーダルボタン（吹き出し）を本文より先に表示する（order:1/2 は base 側で指定済み） */
   .soko__inner { display: flex; flex-direction: column; align-items: center; }
+  .soko__bubbles-head { display: block; width: 100%; text-align: center; }
 
   /* 画面が狭いと左にはみ出すため、ペットボトルは右横に戻す */
   .soko__set--env .soko__set-photo {
