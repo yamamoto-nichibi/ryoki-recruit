@@ -1194,6 +1194,8 @@ html.modal-open body {
     padding: calc(var(--gy1) + 0.25rem) var(--gx1) calc(var(--gy2) + 0.75rem);
   }
   .modal--story .modal__photo,
+  .modal--story .modal__body-wrap,
+  .modal--story .modal__sub,
   .modal--story .modal__copy {
     position: static;
     transform: none;
@@ -1205,37 +1207,36 @@ html.modal-open body {
     aspect-ratio: 1 / 1;
     margin-inline: auto;
   }
-  /* sub写真の絶対配置の基準にするため position:relative にする（PC 用の
-     left/top オフセットは打ち消す。#modal-welfare の上書きも下で無効化） */
-  .modal--story .modal__body-wrap {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-    max-width: 28.75rem;
-    margin-inline: auto;
+  .modal--story .modal__body-wrap { width: 100%; max-width: 28.75rem; margin-inline: auto; }
+  /* 本文の直後に「そこに、リョーキ」→ 写真の順で並べる（order で並び替え。
+     DOM順は body-wrap → sub → copy のまま）。写真は枠内に収まるよう
+     左右にパディング分の余白を持たせて中央寄せ。
+     環境・福祉はスマホ用に用意した横長の合成画像に <picture> で差し替わる。 */
+  .modal--story .modal__copy {
+    order: 1;
+    width: clamp(13rem, 68vw, 24rem);
+    margin: -1.125rem auto 0 0;
   }
-  #modal-welfare .modal__body-wrap { top: auto; }
-  /* 本文の最終行に軽くかぶせて配置。中央寄せ。環境・福祉はスマホ用に用意した
-     横長の合成画像（modal_2_sub_sp.png / modal_3_sub_sp.png、<picture> の source）に差し替わる。
-     flex の並びから外すことで、筆文字コピーは本文の直後に詰まる。 */
+  /* 環境・福祉は <picture> で包んでいるため、flex の直接の子は picture 側になる。
+     order・上余白は picture に持たせ、img（.modal__sub）は img が直接の子の
+     場合（建設）と picture の中の場合（環境・福祉）の両方をカバーする。 */
+  .modal--story .modal__sub,
+  .modal--story .modal__inner > picture {
+    order: 2;
+  }
   .modal--story .modal__sub {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: calc(100% - 0.75rem);
-    bottom: auto;
-    margin-inline: auto;
-    width: clamp(10.5rem, 56vw, 16.25rem);
+    display: block;
+    width: 82%;
     max-width: none;
     max-height: none;
-    z-index: 1;
+    margin: 1.25rem auto 0;
   }
-  /* 環境・福祉はスマホ用の横長画像に合わせて大きめに表示 */
-  #modal-env .modal__sub { width: 131%; }
-  #modal-welfare .modal__sub { width: 130%; }
-  /* 左寄せ */
-  .modal--story .modal__copy { width: clamp(13rem, 68vw, 24rem); margin: -0.5rem auto 0 0; }
+  .modal--story .modal__inner > picture {
+    margin: 1.25rem 0 0;
+  }
+  .modal--story .modal__inner > picture .modal__sub {
+    margin: 0 auto;
+  }
 
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
   .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
