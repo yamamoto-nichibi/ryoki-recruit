@@ -1518,11 +1518,25 @@ html.modal-open body {
     top: auto !important;
   }
   .bubble__click {
+    width: clamp(3.25rem, 6.5vw, 4.75rem) !important;
+  }
+  .bubble--build .bubble__click {
     top: -14px !important;
     left: 0 !important;
     right: auto !important;
+    transform: rotate(-20deg) !important;
   }
-  .bubble--welfare .bubble__click { left: auto !important; right: 0 !important; }
+  .bubble--env .bubble__click {
+    top: -14px !important;
+    left: auto !important;
+    right: 0 !important;
+  }
+  .bubble--welfare .bubble__click {
+    top: 6% !important;
+    left: -4% !important;
+    right: auto !important;
+    transform: rotate(-18deg) !important;
+  }
   /* 吹き出しの拡大に合わせ、ラベル文字と品物写真も同じ比率で少し大きく */
   .bubble__label { font-size: 1.125rem !important; }
   .soko__bubble-photo { height: clamp(4.5rem, 9vw, 6.5rem) !important; }
