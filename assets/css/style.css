@@ -853,23 +853,15 @@ html.modal-open body {
   line-height: 1.4;
   color: #fff;
 }
-/* ラベルの右横に品物の写真（背景透過）を浮かせて添える。
-   写真は position:absolute で浮かせて高さに影響させないため、
-   .soko__set-line と .soko__set-label の間の隙間は生まれない。
-   ※ PC 版はこの写真を吹き出し側（.soko__bubble-photo）へ移すため非表示にする。
-     スマホ版（縦積みレイアウト）はこれまで通りここに表示する。 */
+/* ラベルの右横に品物の写真（背景透過）を浮かせて添える仕組みだったが、
+   PC・スマホともこの写真は吹き出し側（.soko__bubble-photo）に統一したため、
+   ここでは常に非表示にする（.soko__set-row 自体はレイアウト上そのまま残す）。 */
 .soko__set-row {
   position: relative;
   width: fit-content;
 }
 .soko__set-photo {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  margin-left: clamp(0.75rem, 2.5vw, 1.5rem);
-  width: auto;
-  height: clamp(3.75rem, 7.5vw, 5.25rem);
-  pointer-events: none;
+  display: none;
 }
 .soko__set--env .soko__set-photo {
   left: auto;
@@ -879,10 +871,6 @@ html.modal-open body {
   transform: rotate(-10deg);
 }
 .soko__set--welfare .soko__set-photo { transform: rotate(10deg); }
-
-@media (min-width: 901px) {
-  .soko__set-photo { display: none; }
-}
 
 /* 吹き出し3つ：右カラムに sticky で留め、左の文章だけがスクロールする */
 .soko__bubbles-wrap {
@@ -901,10 +889,11 @@ html.modal-open body {
   padding: 0;
 }
 
-/* PC 版のみ：各吹き出し（ボタン）自身の子要素として、その「吹き出し口」の
-   先端に品物の写真を添える。ボタンの子にすることで、ホバー拡大（scale）や
+/* 各吹き出し（ボタン）自身の子要素として、その「吹き出し口」の先端に
+   品物の写真を添える。ボタンの子にすることで、ホバー拡大（scale）や
    ウィグルアニメーションに写真も一緒に追従する。位置は各吹き出しSVGの
-   しっぽの座標を、そのボタン自身の幅・高さに対する割合に換算したもの。 */
+   しっぽの座標を、そのボタン自身の幅・高さに対する割合に換算したもの
+   （比率なので、PC・スマホどちらのサイズでも同じ見え方になる）。 */
 .soko__bubble-photo {
   position: absolute;
   width: auto;
@@ -914,21 +903,18 @@ html.modal-open body {
 }
 .soko__bubble-photo--build {
   left: 15%;
-  top: 99.66%;
-  transform: translate(-70%, -14%) rotate(-6deg);
+  top: 88%;
+  transform: translate(-70%, -14%) rotate(-20deg);
 }
 .soko__bubble-photo--env {
   left: 98%;
-  top: 96.44%;
+  top: 86%;
   transform: translate(-16%, -14%) rotate(22deg);
 }
 .soko__bubble-photo--welfare {
   left: 62%;
-  top: 108%;
+  top: 96%;
   transform: translate(-30%, -14%) rotate(-8deg);
-}
-@media (max-width: 900px) {
-  .soko__bubble-photo { display: none; }
 }
 /* .bubble は <button>：ボタンの見た目をリセットし、位置指定だけ残す */
 .soko__bubbles .bubble {
