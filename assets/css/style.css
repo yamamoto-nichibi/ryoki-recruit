@@ -1047,6 +1047,10 @@ html.modal-open body {
     left var(--gx4) top 0,
     left 0 top var(--gy1),
     left 0 bottom var(--gy2);
+  /* 縦4本（写真・本文カラムの縁）は画面に固定。横2本（原稿用紙の上下の罫線）だけは
+     中身と一緒にスクロールさせ、上の線はスクロールすると隠れ、下の線はスクロール
+     しないと見えないようにする。 */
+  background-attachment: scroll, scroll, scroll, scroll, local, local;
 }
 .modal--story[open] { animation: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 @keyframes modalIn {
@@ -1179,6 +1183,8 @@ html.modal-open body {
       right var(--gx1) top 0,
       left 0 top var(--gy1),
       left 0 bottom var(--gy2);
+    /* 左右2本（額縁の縦罫線）は固定。上下2本（原稿用紙の罫線）は中身と一緒にスクロール。 */
+    background-attachment: scroll, scroll, local, local;
   }
   .modal--story .modal__inner {
     display: flex;
