@@ -1207,9 +1207,19 @@ html.modal-open body {
     margin-inline: auto;
   }
   .modal--story .modal__body-wrap { width: 100%; max-width: 28.75rem; margin-inline: auto; }
-  /* PC と同じく右の罫線にそろえて配置（中央寄せにしない） */
-  .modal--story .modal__sub { width: clamp(11.25rem, 60vw, 18.75rem); margin: 0 0 0 auto; }
-  .modal--story .modal__copy { width: clamp(13.75rem, 74vw, 26.25rem); margin: 0.25rem 0 0 auto; }
+  /* PC と同じく右の罫線にそろえて配置（中央寄せにしない）。
+     本文最終行のすぐ右横に来るよう、上へ大きくかぶせて詰める。 */
+  .modal--story .modal__sub {
+    width: clamp(13rem, 72vw, 21rem);
+    max-width: none;
+    max-height: none;
+    margin: -3.2rem 0 0 auto;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    z-index: 1;
+  }
+  .modal--story .modal__copy { width: clamp(13.75rem, 74vw, 26.25rem); margin: -1.25rem 0 0 auto; }
 
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
   .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
