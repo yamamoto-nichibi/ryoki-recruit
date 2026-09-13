@@ -511,31 +511,29 @@ html.modal-open body {
   .concept { margin-top: -1vh; }
 
   .concept__grid {
-    aspect-ratio: 25 / 36;   /* 実写真の比率から積み上げた合計の高さに合わせた比率 */
+    aspect-ratio: 100 / 116.2;   /* 実写真の比率から積み上げた合計の高さに合わせた比率 */
   }
 
   .concept__grid img:nth-child(2),   /* people-phone       */
   .concept__grid img:nth-child(3),   /* welfare-warehouse  */
-  .concept__grid img:nth-child(7),   /* const-excavator    */
-  .concept__grid img:nth-child(10),  /* env-attach         */
-  .concept__grid img:nth-child(13),  /* const-cranes       */
-  .concept__grid img:nth-child(14) { /* const-steel        */
+  .concept__grid img:nth-child(6),   /* const-excavator    */
+  .concept__grid img:nth-child(8),   /* env-attach-2       */
+  .concept__grid img:nth-child(11),  /* const-cranes-2     */
+  .concept__grid img:nth-child(12) { /* const-steel-2      */
     display: none;
   }
 
-  /* 左コラム：env-crusher → crowd → welfare-maint を縦積み */
-  .concept__grid img:nth-child(1) { --l: 0%  !important; --t: 0%     !important; --w: 54% !important; } /* env-crusher */
-  .concept__grid img:nth-child(5) { --l: 0%  !important; --t: 20.5%  !important; --w: 54% !important; } /* crowd */
-  .concept__grid img:nth-child(6) { --l: 0%  !important; --t: 48.6%  !important; --w: 54% !important; } /* welfare-maint */
+  /* 左コラム：env-crusher → welfare-maint を縦積み */
+  .concept__grid img:nth-child(1) { --l: 0%  !important; --t: 0%     !important; --w: 56% !important; } /* env-crusher */
+  .concept__grid img:nth-child(5) { --l: 0%  !important; --t: 26.34% !important; --w: 56% !important; } /* welfare-maint */
 
-  /* 右コラム：site → people-inspect → family を縦積み */
-  .concept__grid img:nth-child(4) { --l: 58% !important; --t: 0%    !important; --w: 42% !important; } /* site */
-  .concept__grid img:nth-child(8) { --l: 58% !important; --t: 37.3% !important; --w: 42% !important; } /* people-inspect */
-  .concept__grid img:nth-child(9) { --l: 58% !important; --t: 55.1% !important; --w: 42% !important; } /* family */
+  /* 右コラム：site → people-test を縦積み */
+  .concept__grid img:nth-child(4) { --l: 60% !important; --t: 0%     !important; --w: 40% !important; } /* site */
+  .concept__grid img:nth-child(7) { --l: 60% !important; --t: 44.06% !important; --w: 40% !important; } /* people-test */
 
-  /* 最下段：const-training / people-team を横並びで一番下に */
-  .concept__grid img:nth-child(11) { --l: 0%  !important; --t: 77.8% !important; --w: 48% !important; } /* const-training */
-  .concept__grid img:nth-child(12) { --l: 52% !important; --t: 77.8% !important; --w: 48% !important; } /* people-team */
+  /* 最下段：const-training-2 / people-team-2 を横並びで一番下に */
+  .concept__grid img:nth-child(9)  { --l: 0%  !important; --t: 72.46% !important; --w: 48% !important; } /* const-training-2 */
+  .concept__grid img:nth-child(10) { --l: 52% !important; --t: 72.46% !important; --w: 48% !important; } /* people-team-2 */
 
   /* PC と同じく、カードは写真面付けの中央に重ねて載せる（写真の上に文字ボックス） */
   .concept__card,
