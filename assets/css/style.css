@@ -1101,13 +1101,15 @@ html.modal-open body {
   margin: 0 0 1em;
   font-weight: 700;
   line-height: 1.6;
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  /* min/max は px 固定（rem だと 900〜1280px の間で html 側のフルイド縮小の
+     影響を受け、900px 直前だけ最小値を下回って見える段差が出るため） */
+  font-size: clamp(16px, 1.2vw, 18px);
   color: var(--color-text);
 }
 .modal--story .modal__text {
   margin: 0 0 0.9em;
   line-height: 1.6;
-  font-size: clamp(0.875rem, 1.05vw, 1rem);
+  font-size: clamp(14px, 1.05vw, 16px);
   color: var(--color-text-muted);
 }
 .modal--story .modal__text--em {
