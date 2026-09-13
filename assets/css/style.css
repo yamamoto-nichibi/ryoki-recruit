@@ -1230,8 +1230,17 @@ html.modal-open body {
     max-height: none;
     z-index: 1;
   }
+  /* 環境・福祉は写真が2枚組の合成なので、それぞれ指定のサイズで中央寄せに */
+  #modal-env .modal__sub,
+  #modal-welfare .modal__sub {
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+  }
+  #modal-env .modal__sub { width: 131%; }
+  #modal-welfare .modal__sub { width: 130%; }
   /* 左寄せ */
-  .modal--story .modal__copy { width: clamp(11rem, 58vw, 20rem); margin: -0.5rem auto 0 0; }
+  .modal--story .modal__copy { width: clamp(13rem, 68vw, 24rem); margin: -0.5rem auto 0 0; }
 
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
   .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
