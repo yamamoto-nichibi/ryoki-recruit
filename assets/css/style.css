@@ -311,15 +311,6 @@ html.modal-open body {
   to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
 
-/* --- タブレット：% 配置なのでモザイクはそのまま破綻しない --- */
-@media (max-width: 900px) {
-  .fv__copy {
-    top: auto;
-    bottom: 18%;
-    font-size: 1rem;
-  }
-}
-
 /* --- スマホ：面付けを 2 列 × 6 段のベタ組みに組み替える（4 枚は非表示） ---
    ※ デスクトップの座標はインライン style で入れているため、
      ここで上書きするには custom property にも !important が要る。 */
