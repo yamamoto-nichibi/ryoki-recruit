@@ -1518,7 +1518,7 @@ html.modal-open body {
     top: auto !important;
   }
   .bubble__click {
-    width: clamp(3.25rem, 6.5vw, 4.75rem) !important;
+    width: clamp(4rem, 8vw, 5.75rem) !important;
   }
   .bubble--build .bubble__click {
     top: -14px !important;
@@ -1530,9 +1530,10 @@ html.modal-open body {
     top: -14px !important;
     left: auto !important;
     right: 0 !important;
+    transform: rotate(10deg) !important;
   }
   .bubble--welfare .bubble__click {
-    top: 6% !important;
+    top: 2% !important;
     left: -4% !important;
     right: auto !important;
     transform: rotate(-18deg) !important;
