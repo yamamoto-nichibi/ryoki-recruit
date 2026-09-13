@@ -1263,7 +1263,10 @@ html.modal-open body {
 }
 
 /* --- リョーキという会社を、人にたとえると --- */
-.liken { padding-top: clamp(6rem, 20vh, 14rem); }
+.liken {
+  padding-top: clamp(6rem, 20vh, 14rem);
+  border-top: 1.5px solid var(--color-text);
+}
 .liken__inner {
   max-width: var(--container-max);
   margin-inline: auto;
@@ -1288,6 +1291,11 @@ html.modal-open body {
   font-size: clamp(24px, 3.6vw, 2.3rem);
   font-weight: 700;
   line-height: 1.48;
+}
+.liken__head-box {
+  display: inline-block;
+  border: 1.5px solid var(--color-text);
+  padding: 0.1em 0.4em;
 }
 .liken__body {
   margin: 0 0 1.125rem;
