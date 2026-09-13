@@ -1490,7 +1490,8 @@ html.modal-open body {
     aspect-ratio: auto;
   }
 
-  /* 吹き出しは本文の上に回し、絶対配置をやめて横並び */
+  /* 吹き出しは本文の上に回し、絶対配置をやめて縦積みにする。
+     3つを少し大きくし、上から左・右・左と互い違いにずらして配置する。 */
   .soko__bubbles {
     position: static;
     inset: auto;
@@ -1499,17 +1500,20 @@ html.modal-open body {
     aspect-ratio: auto;
     margin: 0 auto 2.5rem;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.625rem 1.25rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
     padding: 0;
   }
+  .soko__bubbles > li:nth-child(1) { transform: translateX(-15%); }
+  .soko__bubbles > li:nth-child(2) { transform: translateX(15%); }
+  .soko__bubbles > li:nth-child(3) { transform: translateX(-15%); }
   .soko__bubbles .bubble {
     /* position:relative にして、中の .bubble__label / .bubble__click の
        絶対配置の基準がこのボタン自身になるようにする（static だと基準が
        .soko__inner まで遡ってしまい、ラベルが吹き出しの外に集まって見えていた） */
     position: relative;
-    width: clamp(9.375rem, 42vw, 12.5rem) !important;
+    width: clamp(11rem, 50vw, 14.75rem) !important;
     left: auto !important;
     top: auto !important;
   }
@@ -1519,6 +1523,9 @@ html.modal-open body {
     right: auto !important;
   }
   .bubble--welfare .bubble__click { left: auto !important; right: 0 !important; }
+  /* 吹き出しの拡大に合わせ、ラベル文字と品物写真も同じ比率で少し大きく */
+  .bubble__label { font-size: 1.125rem !important; }
+  .soko__bubble-photo { height: clamp(4.5rem, 9vw, 6.5rem) !important; }
 
   /* 文字サイズの下限を16pxに（サブ/メインなどのジャンプ率は保つ） */
   .soko__body,
@@ -1528,7 +1535,6 @@ html.modal-open body {
   .more__label,
   .more__btn-sub,
   .site-footer__copy { font-size: 1rem; }
-  .bubble__label { font-size: 1rem; }
   .more__btn-main { font-size: 1.25rem; }
 }
 
