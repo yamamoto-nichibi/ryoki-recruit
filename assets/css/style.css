@@ -1216,27 +1216,22 @@ html.modal-open body {
     margin-inline: auto;
   }
   #modal-welfare .modal__body-wrap { top: auto; }
-  /* 本文の最終行に軽くかぶせて配置（右のガイド線の内側に収める）。
+  /* 本文の最終行に軽くかぶせて配置。中央寄せ。環境・福祉はスマホ用に用意した
+     横長の合成画像（modal_2_sub_sp.png / modal_3_sub_sp.png、<picture> の source）に差し替わる。
      flex の並びから外すことで、筆文字コピーは本文の直後に詰まる。 */
   .modal--story .modal__sub {
     position: absolute;
-    left: auto;
+    left: 0;
     right: 0;
     top: calc(100% - 0.75rem);
     bottom: auto;
-    margin: 0;
+    margin-inline: auto;
     width: clamp(10.5rem, 56vw, 16.25rem);
     max-width: none;
     max-height: none;
     z-index: 1;
   }
-  /* 環境・福祉は写真が2枚組の合成なので、それぞれ指定のサイズで中央寄せに */
-  #modal-env .modal__sub,
-  #modal-welfare .modal__sub {
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-  }
+  /* 環境・福祉はスマホ用の横長画像に合わせて大きめに表示 */
   #modal-env .modal__sub { width: 131%; }
   #modal-welfare .modal__sub { width: 130%; }
   /* 左寄せ */
