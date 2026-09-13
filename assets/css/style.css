@@ -1207,7 +1207,13 @@ html.modal-open body {
     aspect-ratio: 1 / 1;
     margin-inline: auto;
   }
-  .modal--story .modal__body-wrap { width: 100%; max-width: 28.75rem; margin-inline: auto; }
+  /* 本文は写真と違い、左右のガイド線から少し離す（ガイド線ぴったりにはしない） */
+  .modal--story .modal__body-wrap {
+    width: 100%;
+    max-width: 28.75rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
   /* 本文の直後に「そこに、リョーキ」→ 写真の順で並べる（order で並び替え。
      DOM順は body-wrap → sub → copy のまま）。写真は枠内に収まるよう
      左右にパディング分の余白を持たせて中央寄せ。
@@ -1215,7 +1221,8 @@ html.modal-open body {
   .modal--story .modal__copy {
     order: 1;
     width: clamp(13rem, 68vw, 24rem);
-    margin: -1.125rem auto 0 0;
+    /* 本文と同じく左のガイド線から少し離す */
+    margin: -1.125rem auto 0 1rem;
   }
   /* 環境・福祉は <picture> で包んでいるため、flex の直接の子は picture 側になる。
      order・上余白は picture に持たせ、img（.modal__sub）は img が直接の子の
