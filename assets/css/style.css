@@ -24,8 +24,8 @@
   /* タイポグラフィ */
   --font-base: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
-  --fs-h1: clamp(2rem, 5vw, 3.5rem);
-  --fs-h2: clamp(1.5rem, 3.5vw, 2.25rem);
+  --fs-h1: clamp(32px, 5vw, 3.5rem);
+  --fs-h2: clamp(24px, 3.5vw, 2.25rem);
   --fs-h3: 1.125rem;
   --fs-body: 1rem;
   --fs-small: 0.875rem;
@@ -181,7 +181,7 @@ html.modal-open body {
 }
 
 .stat__num {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(40px, 6vw, 4rem);
   font-weight: 700;
   color: var(--color-primary);
   line-height: 1;
@@ -266,7 +266,7 @@ html.modal-open body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;   /* 各行の白背景を文字幅ぴったりに（右端でこぼこ） */
-  font-size: clamp(0.95rem, 1.8vw, 1.4rem);
+  font-size: clamp(15.2px, 1.8vw, 1.4rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   animation: fvRight 0.9s ease both;
@@ -462,7 +462,7 @@ html.modal-open body {
   gap: 0.625rem;
   margin: 0 0 1.75rem;
   font-weight: 700;
-  font-size: clamp(0.9rem, 1.9vw, 1.2rem);
+  font-size: clamp(14.4px, 1.9vw, 1.2rem);
   line-height: 1.48;
 }
 
@@ -474,7 +474,7 @@ html.modal-open body {
 
 .concept__body {
   margin: 0;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  font-size: clamp(14.4px, 1.8vw, 1.1rem);
   line-height: 1.96;
   color: var(--color-text);
 }
@@ -484,7 +484,7 @@ html.modal-open body {
 }
 
 .concept__body b {
-  font-size: clamp(0.9rem, 1.9vw, 1.2rem);
+  font-size: clamp(14.4px, 1.9vw, 1.2rem);
   font-weight: 700;
   border: 1px solid var(--color-text);
   padding: 1px 0.5rem;
@@ -492,7 +492,7 @@ html.modal-open body {
 }
 
 .concept__question {
-  font-size: clamp(0.9rem, 1.9vw, 1.2rem);
+  font-size: clamp(14.4px, 1.9vw, 1.2rem);
 }
 
 .concept__answer {
@@ -799,7 +799,7 @@ html.modal-open body {
 /* 見出し（「そこ」を枠囲み） */
 .lead-head {
   margin: 0 0 2.125rem;
-  font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+  font-size: clamp(22.4px, 3.4vw, 2.1rem);
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -829,7 +829,7 @@ html.modal-open body {
 .soko__body {
   margin: 0 0 1.375rem;
   line-height: 1.88;
-  font-size: clamp(0.85rem, 1.5vw, 0.92rem);
+  font-size: clamp(13.6px, 1.5vw, 0.92rem);
 }
 .soko__body--em { font-weight: 700; }
 
@@ -849,7 +849,7 @@ html.modal-open body {
   padding: 0.4em 0.9em;
   border: 1px solid;
   line-height: 1.7;
-  font-size: clamp(0.85rem, 1.5vw, 0.92rem);
+  font-size: clamp(13.6px, 1.5vw, 0.92rem);
   color: var(--color-text);
 }
 .soko__set-label {
@@ -857,7 +857,7 @@ html.modal-open body {
   max-width: 100%;
   margin: 0;
   padding: 0.5em 0.9em;
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-size: clamp(16.8px, 2.2vw, 1.35rem);
   font-weight: 700;
   line-height: 1.4;
   color: #fff;
@@ -944,7 +944,7 @@ html.modal-open body {
   width: 84%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: clamp(0.78rem, 1.35vw, 0.94rem);
+  font-size: clamp(12.48px, 1.35vw, 0.94rem);
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--color-text);
@@ -1058,7 +1058,7 @@ html.modal-open body {
   background: #111;
   color: #fff;
   font-weight: 700;
-  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-size: clamp(14.4px, 1.4vw, 1.05rem);
   letter-spacing: 0.06em;
   cursor: pointer;
   transition: opacity var(--transition);
@@ -1092,7 +1092,7 @@ html.modal-open body {
 }
 .modal--story .modal__heading {
   margin: 0 0 2rem;
-  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  font-size: clamp(24px, 3.4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.32;
@@ -1256,14 +1256,14 @@ html.modal-open body {
 }
 .liken__head {
   margin: 0 0 1.75rem;
-  font-size: clamp(1.5rem, 3.6vw, 2.3rem);
+  font-size: clamp(24px, 3.6vw, 2.3rem);
   font-weight: 700;
   line-height: 1.48;
 }
 .liken__body {
   margin: 0 0 1.125rem;
   line-height: 1.84;
-  font-size: clamp(0.85rem, 1.5vw, 0.92rem);
+  font-size: clamp(13.6px, 1.5vw, 0.92rem);
 }
 
 /* --- More Information（ダーク） --- */
@@ -1309,7 +1309,7 @@ html.modal-open body {
 .more__copy {
   margin: 0 0 3rem;
   line-height: 1.96;
-  font-size: clamp(0.86rem, 1.6vw, 0.98rem);
+  font-size: clamp(13.76px, 1.6vw, 0.98rem);
 }
 .more__label {
   margin: 0 0 1.25rem;
@@ -1377,7 +1377,7 @@ html.modal-open body {
 .need__text { position: relative; z-index: 1; }
 .need__lead {
   margin: 0 0 1.75rem;
-  font-size: clamp(1.2rem, 2.9vw, 1.85rem);
+  font-size: clamp(19.2px, 2.9vw, 1.85rem);
   font-weight: 700;
   line-height: 1.64;
 }
@@ -1387,7 +1387,7 @@ html.modal-open body {
   gap: 0.625rem;
   margin: 0;
   font-weight: 700;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(16px, 2vw, 1.3rem);
 }
 
 /* --- クロージング（帯コラージュ＋筆文字） --- */
