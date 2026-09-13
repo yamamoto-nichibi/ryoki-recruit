@@ -334,18 +334,20 @@ html.modal-open body {
   }
 
   /* PC 版と同じく、大きさと形の違う写真を重ねて貼ったような非対称の面付けに組み替える */
-  .fv__tile:nth-child(1)  { --l: 0    !important; --t: 0    !important; --w: 60%  !important; --h: 18%  !important; } /* const-cranes   */
-  .fv__tile:nth-child(2)  { --l: 60%  !important; --t: 0    !important; --w: 40%  !important; --h: 18%  !important; } /* hq             */
-  .fv__tile:nth-child(4)  { --l: 0    !important; --t: 18%  !important; --w: 35%  !important; --h: 16%  !important; } /* const-steel    */
-  .fv__tile:nth-child(5)  { --l: 35%  !important; --t: 18%  !important; --w: 32%  !important; --h: 32%  !important; } /* crowd（縦に長い1枚）*/
-  .fv__tile:nth-child(6)  { --l: 67%  !important; --t: 18%  !important; --w: 33%  !important; --h: 16%  !important; } /* const-training */
-  .fv__tile:nth-child(7)  { --l: 67%  !important; --t: 34%  !important; --w: 33%  !important; --h: 16%  !important; } /* family         */
-  .fv__tile:nth-child(9)  { --l: 0    !important; --t: 34%  !important; --w: 35%  !important; --h: 16%  !important; } /* people-inspect */
-  .fv__tile:nth-child(10) { --l: 0    !important; --t: 50%  !important; --w: 38%  !important; --h: 20%  !important; } /* people-talk    */
-  .fv__tile:nth-child(12) { --l: 38%  !important; --t: 50%  !important; --w: 62%  !important; --h: 20%  !important; } /* people-team    */
-  .fv__tile:nth-child(13) { --l: 0    !important; --t: 70%  !important; --w: 26%  !important; --h: 30%  !important; } /* env-shredder   */
-  .fv__tile:nth-child(14) { --l: 26%  !important; --t: 70%  !important; --w: 42%  !important; --h: 30%  !important; } /* const-truck    */
-  .fv__tile:nth-child(16) { --l: 68%  !important; --t: 70%  !important; --w: 32%  !important; --h: 30%  !important; } /* people-office  */
+  /* PC 版と同じく、タイル同士が実際に重なり合う（境界がぴったり接するだけでなく
+     互いの領域に食い込む）ように配置し、写真を重ねて貼ったコラージュ感を出す */
+  .fv__tile:nth-child(1)  { --l: 0    !important; --t: 0    !important; --w: 60%  !important; --h: 20%  !important; } /* const-cranes   */
+  .fv__tile:nth-child(2)  { --l: 56%  !important; --t: 0    !important; --w: 44%  !important; --h: 18%  !important; } /* hq（cranesと4%重なる）*/
+  .fv__tile:nth-child(4)  { --l: 0    !important; --t: 18%  !important; --w: 38%  !important; --h: 18%  !important; } /* const-steel    */
+  .fv__tile:nth-child(5)  { --l: 32%  !important; --t: 16%  !important; --w: 36%  !important; --h: 36%  !important; } /* crowd（周囲と重なる縦長タイル）*/
+  .fv__tile:nth-child(6)  { --l: 64%  !important; --t: 18%  !important; --w: 36%  !important; --h: 18%  !important; } /* const-training（crowdと重なる）*/
+  .fv__tile:nth-child(7)  { --l: 64%  !important; --t: 34%  !important; --w: 36%  !important; --h: 18%  !important; } /* family（crowdと重なる）*/
+  .fv__tile:nth-child(9)  { --l: 0    !important; --t: 34%  !important; --w: 34%  !important; --h: 18%  !important; } /* people-inspect */
+  .fv__tile:nth-child(10) { --l: 0    !important; --t: 50%  !important; --w: 36%  !important; --h: 20%  !important; } /* people-talk    */
+  .fv__tile:nth-child(12) { --l: 34%  !important; --t: 52%  !important; --w: 66%  !important; --h: 20%  !important; } /* people-team    */
+  .fv__tile:nth-child(13) { --l: 0    !important; --t: 68%  !important; --w: 30%  !important; --h: 32%  !important; } /* env-shredder   */
+  .fv__tile:nth-child(14) { --l: 27%  !important; --t: 70%  !important; --w: 45%  !important; --h: 30%  !important; } /* const-truck（shredderと重なる）*/
+  .fv__tile:nth-child(16) { --l: 66%  !important; --t: 72%  !important; --w: 34%  !important; --h: 28%  !important; } /* people-office（truckと重なる）*/
 
   .fv__copy {
     left: 0;
