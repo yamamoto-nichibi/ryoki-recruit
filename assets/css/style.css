@@ -266,7 +266,7 @@ html.modal-open body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;   /* 各行の白背景を文字幅ぴったりに（右端でこぼこ） */
-  font-size: clamp(15.2px, 1.8vw, 1.4rem);
+  font-size: clamp(17px, 1.8vw, 1.4rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   animation: fvRight 0.9s ease both;
@@ -462,7 +462,7 @@ html.modal-open body {
   gap: 0.625rem;
   margin: 0 0 1.75rem;
   font-weight: 700;
-  font-size: clamp(14.4px, 1.9vw, 1.2rem);
+  font-size: clamp(16px, 1.9vw, 1.2rem);
   line-height: 1.48;
 }
 
@@ -474,7 +474,7 @@ html.modal-open body {
 
 .concept__body {
   margin: 0;
-  font-size: clamp(14.4px, 1.8vw, 1.1rem);
+  font-size: clamp(16px, 1.8vw, 1.1rem);
   line-height: 1.96;
   color: var(--color-text);
 }
@@ -484,7 +484,7 @@ html.modal-open body {
 }
 
 .concept__body b {
-  font-size: clamp(14.4px, 1.9vw, 1.2rem);
+  font-size: clamp(16px, 1.9vw, 1.2rem);
   font-weight: 700;
   border: 1px solid var(--color-text);
   padding: 1px 0.5rem;
@@ -492,7 +492,7 @@ html.modal-open body {
 }
 
 .concept__question {
-  font-size: clamp(14.4px, 1.9vw, 1.2rem);
+  font-size: clamp(16px, 1.9vw, 1.2rem);
 }
 
 .concept__answer {
