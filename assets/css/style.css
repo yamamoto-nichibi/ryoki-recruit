@@ -1210,10 +1210,10 @@ html.modal-open body {
   /* PC と同じく右の罫線にそろえて配置（中央寄せにしない）。
      本文最終行のすぐ右横に来るよう、上へ大きくかぶせて詰める。 */
   .modal--story .modal__sub {
-    width: clamp(13rem, 72vw, 21rem);
+    width: clamp(10.5rem, 56vw, 16.25rem);
     max-width: none;
     max-height: none;
-    margin: -3.2rem 0 0 auto;
+    margin: -2.4rem 0 0 auto;
     position: relative;
     top: auto;
     bottom: auto;
