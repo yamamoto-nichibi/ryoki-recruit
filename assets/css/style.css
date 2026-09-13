@@ -772,23 +772,14 @@ html.modal-open body {
 }
 .fv-static [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
 
-/* ===== セクション・スタッキング =====
-   #soko / #liken を画面に固定（position:sticky）したまま、次のセクションが
-   下からせり上がって覆いかぶさる。固定は .stack 区間の中だけで働き、
-   区間の終端（#liken の下端）で解除されるので、以降の #more / #need /
-   クロージング／フッターは通常フローで正しく前面に出る。
-   ※ .stack には overflow / transform / filter を掛けないこと（sticky が壊れる）。
-   ※ scroll-snap は上下スクロールでスナップが溜まって固まる不具合が出たため撤去。 */
+/* ===== セクション区間 =====
+   #soko / #liken は通常フローで上から下へ流れる。#liken は次のセクションに
+   覆いかぶさらず、スクロールで画面に入ったタイミングでふわっとフェードインする。 */
 
 .stack {
   position: relative;
 }
 
-/* sticky の基準（containing block）を #soko 単体に限定するための枠。
-   これがないと #soko の sticky 判定が .stack 全体（#liken を含む）を基準にしてしまい、
-   本来より長く固定され続け、下端が見える頃には #liken がすでにかぶさってしまう。 */
-/* #soko は通常のブロック（中身が1画面より高いため、そのままスクロールで全部見える）。
-   右の吹き出しだけを .soko__bubbles 側で sticky にして画面に留める。 */
 .soko {
   position: relative;
   background: #fff;
@@ -796,30 +787,13 @@ html.modal-open body {
 }
 
 .liken {
-  position: sticky;
-  top: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
   background: #fff;
-  z-index: 3;
-  /* #soko に覆いかぶさっている上端を見せる影 */
-  box-shadow: 0 -1.5rem 3.5rem -1.75rem rgba(15, 20, 26, 0.22);
 }
 
-/* スタッキング時は data-reveal のスライド／フェードを止める（sticky と transform が競合） */
+/* #liken はスライドさせず、フェードのみでふわっと現れる */
 .liken[data-reveal] {
-  opacity: 1;
   transform: none;
-  transition: none;
-}
-
-/* スマホ／タブレットは通常スクロール（sticky を解除） */
-@media (max-width: 900px) {
-  .liken {
-    position: static;
-    min-height: 0;
-    display: block;
-  }
+  transition: opacity 1.2s ease;
 }
 
 /* 見出し（「そこ」を枠囲み） */
