@@ -1265,6 +1265,7 @@ html.modal-open body {
 /* --- リョーキという会社を、人にたとえると --- */
 .liken {
   padding-top: clamp(6rem, 20vh, 14rem);
+  padding-bottom: clamp(6rem, 20vh, 14rem);
   border-top: 1.5px solid var(--color-text);
 }
 .liken__inner {
