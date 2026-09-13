@@ -1194,6 +1194,8 @@ html.modal-open body {
     padding: calc(var(--gy1) + 0.25rem) var(--gx1) calc(var(--gy2) + 0.75rem);
   }
   .modal--story .modal__photo,
+  .modal--story .modal__body-wrap,
+  .modal--story .modal__sub,
   .modal--story .modal__copy {
     position: static;
     transform: none;
@@ -1205,29 +1207,17 @@ html.modal-open body {
     aspect-ratio: 1 / 1;
     margin-inline: auto;
   }
-  /* sub写真の絶対配置の基準にするため position:relative にする（PC 用の
-     left/top オフセットは打ち消す。#modal-welfare の上書きも下で無効化） */
-  .modal--story .modal__body-wrap {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-    max-width: 28.75rem;
-    margin-inline: auto;
-  }
-  #modal-welfare .modal__body-wrap { top: auto; }
-  /* 本文の最終行に軽くかぶせて配置（右のガイド線の内側に収める）。
-     flex の並びから外すことで、筆文字コピーは本文の直後に詰まる。 */
+  .modal--story .modal__body-wrap { width: 100%; max-width: 28.75rem; margin-inline: auto; }
+  /* PC と同じく右の罫線にそろえて配置（中央寄せにしない）。
+     本文最終行のすぐ右横に来るよう、上へかぶせて詰める（右へのはみ出しはなし）。 */
   .modal--story .modal__sub {
-    position: absolute;
-    left: auto;
-    right: 0;
-    top: calc(100% - 0.75rem);
-    bottom: auto;
-    margin: 0;
-    width: clamp(9rem, 48vw, 14rem);
+    width: clamp(10.5rem, 56vw, 16.25rem);
     max-width: none;
     max-height: none;
+    margin: -2.4rem 0 0 auto;
+    position: relative;
+    top: auto;
+    bottom: auto;
     z-index: 1;
   }
   /* 左寄せ */
