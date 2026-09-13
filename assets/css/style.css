@@ -1188,7 +1188,7 @@ body {
     width: 100%;
     max-width: 26.25rem;
     height: auto;
-    aspect-ratio: 749 / 959;
+    aspect-ratio: 1 / 1;
     margin-inline: auto;
   }
   .modal--story .modal__body-wrap { width: 100%; max-width: 28.75rem; margin-inline: auto; }
