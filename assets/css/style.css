@@ -1171,6 +1171,7 @@ html.modal-open body {
     --gy1: 1.5rem;  /* 上の罫線位置 */
     --gy2: 1.75rem; /* 下の罫線位置（スクロール末尾からの距離） */
     overflow-y: auto;
+    overflow-x: hidden; /* sub写真を右のガイド線からはみ出させても横スクロールさせない */
     background-image:
       linear-gradient(var(--guide) 0 0),
       linear-gradient(var(--guide) 0 0),
@@ -1193,8 +1194,6 @@ html.modal-open body {
     padding: calc(var(--gy1) + 0.25rem) var(--gx1) calc(var(--gy2) + 0.75rem);
   }
   .modal--story .modal__photo,
-  .modal--story .modal__body-wrap,
-  .modal--story .modal__sub,
   .modal--story .modal__copy {
     position: static;
     transform: none;
@@ -1206,20 +1205,33 @@ html.modal-open body {
     aspect-ratio: 1 / 1;
     margin-inline: auto;
   }
-  .modal--story .modal__body-wrap { width: 100%; max-width: 28.75rem; margin-inline: auto; }
-  /* PC と同じく右の罫線にそろえて配置（中央寄せにしない）。
-     本文最終行のすぐ右横に来るよう、上へ大きくかぶせて詰める。 */
+  /* sub写真の絶対配置の基準にするため position:relative にする（PC 用の
+     left/top オフセットは打ち消す。#modal-welfare の上書きも下で無効化） */
+  .modal--story .modal__body-wrap {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 28.75rem;
+    margin-inline: auto;
+  }
+  #modal-welfare .modal__body-wrap { top: auto; }
+  /* 本文の最終行に軽くかぶせつつ、右のガイド線の外へ少しはみ出させる。
+     flex の並びから外すことで、筆文字コピーは本文の直後に詰まる。 */
   .modal--story .modal__sub {
-    width: clamp(10.5rem, 56vw, 16.25rem);
+    position: absolute;
+    left: auto;
+    right: calc(-1 * var(--gx1));
+    top: calc(100% - 0.75rem);
+    bottom: auto;
+    margin: 0;
+    width: clamp(9rem, 48vw, 14rem);
     max-width: none;
     max-height: none;
-    margin: -2.4rem 0 0 auto;
-    position: relative;
-    top: auto;
-    bottom: auto;
     z-index: 1;
   }
-  .modal--story .modal__copy { width: clamp(13.75rem, 74vw, 26.25rem); margin: -1.25rem 0 0 auto; }
+  /* PC と同じく右の罫線にそろえて配置（中央寄せにしない） */
+  .modal--story .modal__copy { width: clamp(11rem, 58vw, 20rem); margin: -0.5rem 0 0 auto; }
 
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
   .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
