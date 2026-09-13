@@ -495,18 +495,15 @@ body {
   .concept__grid { aspect-ratio: 1920 / 2200; }
 }
 
-/* --- スマホ：PC と同じ「大きさと形の違う写真を重ねた」絶対配置コラージュを維持し、
+/* --- スマホ：PC と同じく写真はトリミングせず height:auto で元の比率のまま、
+   左右 2 本の縦積みコラム（大きさ・形の異なる写真）＋上下の帯で面付けし、
    中央のカードを写真の上に重ねて載せる（PC のレイアウト思想をそのまま踏襲）。
-   写真は object-fit:cover でタイル化し、8 枚だけ残して余白の破綻を防ぐ。 --- */
+   各写真の実ピクセル比率から --t を逆算し、縦方向の隙間・重なりが出ないように配置。 --- */
 @media (max-width: 640px) {
   .concept { margin-top: -1vh; }
 
   .concept__grid {
-    aspect-ratio: 375 / 620;
-  }
-
-  .concept__grid img {
-    object-fit: cover;
+    aspect-ratio: 25 / 36;   /* 実写真の比率から積み上げた合計の高さに合わせた比率 */
   }
 
   .concept__grid img:nth-child(2),   /* people-phone       */
@@ -518,19 +515,23 @@ body {
     display: none;
   }
 
-  .concept__grid img:nth-child(1)  { --l: 0%   !important; --t: 0%   !important; --w: 58% !important; --h: 14% !important; } /* env-crusher    */
-  .concept__grid img:nth-child(4)  { --l: 58%  !important; --t: 0%   !important; --w: 42% !important; --h: 14% !important; } /* site           */
-  .concept__grid img:nth-child(5)  { --l: 0%   !important; --t: 14%  !important; --w: 22% !important; --h: 38% !important; } /* crowd（左・縦長）*/
-  .concept__grid img:nth-child(6)  { --l: 0%   !important; --t: 52%  !important; --w: 22% !important; --h: 34% !important; } /* welfare-maint  */
-  .concept__grid img:nth-child(8)  { --l: 78%  !important; --t: 14%  !important; --w: 22% !important; --h: 30% !important; } /* people-inspect */
-  .concept__grid img:nth-child(9)  { --l: 78%  !important; --t: 44%  !important; --w: 22% !important; --h: 42% !important; } /* family         */
-  .concept__grid img:nth-child(11) { --l: 0%   !important; --t: 86%  !important; --w: 46% !important; --h: 14% !important; } /* const-training */
-  .concept__grid img:nth-child(12) { --l: 54%  !important; --t: 86%  !important; --w: 46% !important; --h: 14% !important; } /* people-team    */
+  /* 左コラム：env-crusher → crowd → welfare-maint を縦積み */
+  .concept__grid img:nth-child(1) { --l: 0%  !important; --t: 0%     !important; --w: 54% !important; } /* env-crusher */
+  .concept__grid img:nth-child(5) { --l: 0%  !important; --t: 20.5%  !important; --w: 54% !important; } /* crowd */
+  .concept__grid img:nth-child(6) { --l: 0%  !important; --t: 48.6%  !important; --w: 54% !important; } /* welfare-maint */
+
+  /* 右コラム：site → people-inspect → family を縦積み */
+  .concept__grid img:nth-child(4) { --l: 58% !important; --t: 0%    !important; --w: 42% !important; } /* site */
+  .concept__grid img:nth-child(8) { --l: 58% !important; --t: 37.3% !important; --w: 42% !important; } /* people-inspect */
+  .concept__grid img:nth-child(9) { --l: 58% !important; --t: 55.1% !important; --w: 42% !important; } /* family */
+
+  /* 最下段：const-training / people-team を横並びで一番下に */
+  .concept__grid img:nth-child(11) { --l: 0%  !important; --t: 77.8% !important; --w: 48% !important; } /* const-training */
+  .concept__grid img:nth-child(12) { --l: 52% !important; --t: 77.8% !important; --w: 48% !important; } /* people-team */
 
   /* PC と同じく、カードは写真面付けの中央に重ねて載せる（写真の上に文字ボックス） */
   .concept__card,
   .fv-static .concept__card {
-    top: 50%;
     width: min(84vw, 24rem);
     padding: 1.5rem 1.25rem;
   }
