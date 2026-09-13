@@ -316,7 +316,7 @@ html.modal-open body {
   .fv__copy {
     top: auto;
     bottom: 18%;
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
 
@@ -361,7 +361,7 @@ html.modal-open body {
     right: auto;
     top: calc(var(--header-h) + 0.75rem);
     bottom: auto;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .fv__copy-line {
     padding: 0.4em 0.9rem 0.4em 0.9rem;
@@ -502,6 +502,12 @@ html.modal-open body {
 /* --- タブレット：方眼を少し詰める --- */
 @media (max-width: 900px) {
   .concept__grid { aspect-ratio: 1920 / 2200; }
+
+  /* 文字サイズの下限を16pxに（本文とリード文で少しジャンプ率をつける） */
+  .concept__body { font-size: 1rem; }
+  .concept__lead,
+  .concept__body b,
+  .concept__question { font-size: 1.0625rem; }
 }
 
 /* --- スマホ：PC と同じく写真はトリミングせず height:auto で元の比率のまま、
@@ -1247,7 +1253,8 @@ html.modal-open body {
 
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
   .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
-  .modal--story .modal__text { font-size: clamp(0.875rem, 1.05vw, 0.95rem); }
+  .modal--story .modal__text { font-size: clamp(1rem, 1.05vw, 1.075rem); }
+  .modal--story .modal__close { font-size: clamp(1rem, 1.4vw, 1.15rem); }
 }
 
 /* --- リョーキという会社を、人にたとえると --- */
@@ -1499,6 +1506,23 @@ html.modal-open body {
     right: auto !important;
   }
   .bubble--welfare .bubble__click { left: auto !important; right: 0 !important; }
+
+  /* 文字サイズの下限を16pxに（サブ/メインなどのジャンプ率は保つ） */
+  .soko__body,
+  .soko__set-line,
+  .liken__body,
+  .more__copy,
+  .more__label,
+  .more__btn-sub,
+  .site-footer__copy { font-size: 1rem; }
+  .bubble__label { font-size: 1rem; }
+  .more__btn-main { font-size: 1.25rem; }
+}
+
+/* 建設の一文が長く、16px化した .soko__set-line がテキスト列いっぱいに広がるため、
+   横に添えている品物写真を置く余白がなくなる幅では、その写真だけ非表示にする */
+@media (max-width: 410px) {
+  .soko__set--build .soko__set-photo { display: none; }
 }
 
 @media (max-width: 640px) {
