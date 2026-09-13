@@ -61,6 +61,15 @@ body {
   background: var(--color-bg);
 }
 
+/* モーダル（<dialog>）表示中は背面ページのスクロールを止める。
+   .modal--story 側に overflow:auto の専用スクロール領域があるため、
+   背面は html/body 側を固定するだけでよい。 */
+html.modal-open,
+html.modal-open body {
+  overflow: hidden;
+  height: 100%;
+}
+
 /* 3. レイアウト共通 --------------------------------- */
 .container {
   width: 100%;
@@ -1195,6 +1204,10 @@ body {
   /* PC と同じく右の罫線にそろえて配置（中央寄せにしない） */
   .modal--story .modal__sub { width: clamp(11.25rem, 60vw, 18.75rem); margin: 0 0 0 auto; }
   .modal--story .modal__copy { width: clamp(13.75rem, 74vw, 26.25rem); margin: 0.25rem 0 0 auto; }
+
+  /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
+  .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
+  .modal--story .modal__text { font-size: clamp(0.875rem, 1.05vw, 0.95rem); }
 }
 
 /* --- リョーキという会社を、人にたとえると --- */

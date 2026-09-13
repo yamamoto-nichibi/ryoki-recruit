@@ -143,6 +143,7 @@
     if (!dlg) return;
     btn.addEventListener("click", function () {
       lastFocused = btn;
+      document.documentElement.classList.add("modal-open");
       if (typeof dlg.showModal === "function") {
         dlg.showModal();
       } else {
@@ -175,8 +176,9 @@
       if (outside) closeDlg();
     });
 
-    /* 閉じたらトリガーへフォーカスを戻す（<dialog> の close イベント） */
+    /* 閉じたら背面スクロールを解除し、トリガーへフォーカスを戻す（<dialog> の close イベント） */
     dlg.addEventListener("close", function () {
+      document.documentElement.classList.remove("modal-open");
       if (lastFocused && typeof lastFocused.focus === "function") {
         lastFocused.focus();
         lastFocused = null;
