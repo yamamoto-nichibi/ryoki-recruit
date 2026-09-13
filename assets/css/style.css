@@ -901,29 +901,31 @@ html.modal-open body {
   padding: 0;
 }
 
-/* PC 版のみ：各吹き出しの「吹き出し口」の先端に品物の写真を添える
-   （吹き出しSVGのしっぽの座標から、.soko__bubbles-wrap 内での位置を算出） */
+/* PC 版のみ：各吹き出し（ボタン）自身の子要素として、その「吹き出し口」の
+   先端に品物の写真を添える。ボタンの子にすることで、ホバー拡大（scale）や
+   ウィグルアニメーションに写真も一緒に追従する。位置は各吹き出しSVGの
+   しっぽの座標を、そのボタン自身の幅・高さに対する割合に換算したもの。 */
 .soko__bubble-photo {
   position: absolute;
   width: auto;
-  height: clamp(3.5rem, 7vw, 5rem);
+  height: clamp(4rem, 8vw, 5.75rem);
   pointer-events: none;
   transform: translate(-50%, -20%);
 }
 .soko__bubble-photo--build {
-  left: 16.8%;
-  top: 44.9%;
-  transform: translate(-65%, -10%) rotate(-6deg);
+  left: 15%;
+  top: 99.66%;
+  transform: translate(-70%, -14%) rotate(-6deg);
 }
 .soko__bubble-photo--env {
-  left: 94.4%;
-  top: 72.4%;
-  transform: translate(-20%, -10%) rotate(8deg);
+  left: 98%;
+  top: 96.44%;
+  transform: translate(-16%, -14%) rotate(22deg);
 }
 .soko__bubble-photo--welfare {
-  left: 31.4%;
-  top: 100%;
-  transform: translate(-30%, -10%) rotate(-8deg);
+  left: 62%;
+  top: 108%;
+  transform: translate(-30%, -14%) rotate(-8deg);
 }
 @media (max-width: 900px) {
   .soko__bubble-photo { display: none; }
