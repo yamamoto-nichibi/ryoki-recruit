@@ -1089,6 +1089,7 @@ body {
 /* 本文ブロック（本文カラム左ガイド線の少し内側・上ガイド線から下げて） */
 .modal--story .modal__body-wrap {
   position: absolute;
+  z-index: 2;   /* 下部の sub写真・筆文字コピーより前面に出し、文章が隠れないようにする */
   left: calc(var(--gx3) + 2.5vw);
   top: calc(var(--gy1) + 12vh);
   width: 30vw;
@@ -1106,13 +1107,13 @@ body {
 .modal--story .modal__lead {
   margin: 0 0 1em;
   font-weight: 700;
-  line-height: 1.75;
+  line-height: 1.6;
   font-size: clamp(0.78rem, 1.2vw, 0.9rem);
   color: var(--color-text);
 }
 .modal--story .modal__text {
   margin: 0 0 0.9em;
-  line-height: 1.85;
+  line-height: 1.6;
   font-size: clamp(0.7rem, 1.05vw, 0.82rem);
   color: var(--color-text-muted);
 }
@@ -1147,17 +1148,34 @@ body {
   .modal--story[open] { animation: none; }
 }
 
-/* スマホ：縦積みにする（グリッド罫線は消す） */
+/* スマホ：縦積みにしつつ、PC 版と同じ「黒い罫線で囲む」デザイン言語を踏襲する。
+   左右2本・上下2本の罫線でスクロール全体を額縁のように囲み、閉じるボタンは
+   PC 同様その罫線の交点（右上）に重ねる。sub写真／筆文字コピーは PC と同じく
+   本文カラムの右端（＝右の罫線）にそろえる（中央寄せにしない）。 */
 @media (max-width: 820px) {
   .modal--story {
+    --gx1: 5.5vw;   /* 左右の罫線位置（画面端からの距離） */
+    --gy1: 1.5rem;  /* 上の罫線位置 */
+    --gy2: 1.75rem; /* 下の罫線位置（スクロール末尾からの距離） */
     overflow-y: auto;
-    background-image: none;
+    background-image:
+      linear-gradient(var(--guide) 0 0),
+      linear-gradient(var(--guide) 0 0),
+      linear-gradient(var(--guide) 0 0),
+      linear-gradient(var(--guide) 0 0);
+    background-repeat: no-repeat;
+    background-size: 1px 100%, 1px 100%, 100% 1px, 100% 1px;
+    background-position:
+      left var(--gx1) top 0,
+      right var(--gx1) top 0,
+      left 0 top var(--gy1),
+      left 0 bottom var(--gy2);
   }
   .modal--story .modal__inner {
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
-    padding: 4rem 1.25rem 2.5rem;
+    padding: calc(var(--gy1) + 0.25rem) var(--gx1) calc(var(--gy2) + 0.75rem);
   }
   .modal--story .modal__photo,
   .modal--story .modal__body-wrap,
@@ -1174,8 +1192,9 @@ body {
     margin-inline: auto;
   }
   .modal--story .modal__body-wrap { width: 100%; max-width: 28.75rem; margin-inline: auto; }
-  .modal--story .modal__sub { width: clamp(11.25rem, 60vw, 18.75rem); margin-inline: auto; }
-  .modal--story .modal__copy { width: clamp(13.75rem, 74vw, 26.25rem); margin: 0.25rem auto 0; }
+  /* PC と同じく右の罫線にそろえて配置（中央寄せにしない） */
+  .modal--story .modal__sub { width: clamp(11.25rem, 60vw, 18.75rem); margin: 0 0 0 auto; }
+  .modal--story .modal__copy { width: clamp(13.75rem, 74vw, 26.25rem); margin: 0.25rem 0 0 auto; }
 }
 
 /* --- リョーキという会社を、人にたとえると --- */
