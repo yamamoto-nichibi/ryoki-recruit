@@ -1530,10 +1530,10 @@ html.modal-open body {
     top: -14px !important;
     left: auto !important;
     right: 0 !important;
-    transform: rotate(10deg) !important;
+    transform: rotate(25deg) !important;
   }
   .bubble--welfare .bubble__click {
-    top: 2% !important;
+    top: -4% !important;
     left: -4% !important;
     right: auto !important;
     transform: rotate(-18deg) !important;
