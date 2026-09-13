@@ -196,6 +196,7 @@
         </div>
 
         <h3 class="lead-head soko__bubbles-head">リョーキって何の会社？</h3>
+        <div class="soko__bubbles-wrap">
         <ul class="soko__bubbles" aria-label="リョーキの3つの顔">
           <li>
             <button type="button" class="bubble bubble--build" data-modal="modal-build" aria-haspopup="dialog">
@@ -227,6 +228,11 @@
             </button>
           </li>
         </ul>
+        <!-- PC 版のみ：各吹き出しの「吹き出し口」の位置に写真を添える -->
+        <img class="soko__bubble-photo soko__bubble-photo--build" src="assets/images/soko/item-build.png" alt="" aria-hidden="true">
+        <img class="soko__bubble-photo soko__bubble-photo--env" src="assets/images/soko/item-env.png" alt="" aria-hidden="true">
+        <img class="soko__bubble-photo soko__bubble-photo--welfare" src="assets/images/soko/item-welfare.png" alt="" aria-hidden="true">
+        </div>
       </div>
 
       <!-- 吹き出しクリックで開くモーダル（フルスクリーン・ダーク） -->

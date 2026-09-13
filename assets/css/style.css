@@ -812,7 +812,7 @@ html.modal-open body {
   margin-inline: auto;
   padding-inline: var(--container-pad);
   display: grid;
-  grid-template-columns: minmax(0, 31.25rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(2rem, 6vw, 4rem);
   align-items: start;
 }
@@ -855,7 +855,9 @@ html.modal-open body {
 }
 /* ラベルの右横に品物の写真（背景透過）を浮かせて添える。
    写真は position:absolute で浮かせて高さに影響させないため、
-   .soko__set-line と .soko__set-label の間の隙間は生まれない。 */
+   .soko__set-line と .soko__set-label の間の隙間は生まれない。
+   ※ PC 版はこの写真を吹き出し側（.soko__bubble-photo）へ移すため非表示にする。
+     スマホ版（縦積みレイアウト）はこれまで通りここに表示する。 */
 .soko__set-row {
   position: relative;
   width: fit-content;
@@ -878,17 +880,53 @@ html.modal-open body {
 }
 .soko__set--welfare .soko__set-photo { transform: rotate(10deg); }
 
+@media (min-width: 901px) {
+  .soko__set-photo { display: none; }
+}
+
 /* 吹き出し3つ：右カラムに sticky で留め、左の文章だけがスクロールする */
-.soko__bubbles {
+.soko__bubbles-wrap {
   position: sticky;
   top: clamp(3rem, 8vh, 5.5rem);
   order: 1;
   justify-self: center;
   width: min(100%, 31.25rem);
   aspect-ratio: 5 / 4;
+}
+.soko__bubbles {
+  position: absolute;
+  inset: 0;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* PC 版のみ：各吹き出しの「吹き出し口」の先端に品物の写真を添える
+   （吹き出しSVGのしっぽの座標から、.soko__bubbles-wrap 内での位置を算出） */
+.soko__bubble-photo {
+  position: absolute;
+  width: auto;
+  height: clamp(3.5rem, 7vw, 5rem);
+  pointer-events: none;
+  transform: translate(-50%, -20%);
+}
+.soko__bubble-photo--build {
+  left: 16.8%;
+  top: 44.9%;
+  transform: translate(-65%, -10%) rotate(-6deg);
+}
+.soko__bubble-photo--env {
+  left: 94.4%;
+  top: 72.4%;
+  transform: translate(-20%, -10%) rotate(8deg);
+}
+.soko__bubble-photo--welfare {
+  left: 31.4%;
+  top: 100%;
+  transform: translate(-30%, -10%) rotate(-8deg);
+}
+@media (max-width: 900px) {
+  .soko__bubble-photo { display: none; }
 }
 /* .bubble は <button>：ボタンの見た目をリセットし、位置指定だけ残す */
 .soko__bubbles .bubble {
@@ -1448,9 +1486,17 @@ html.modal-open body {
   .more,
   .need { min-height: 0; }
 
+  /* 吹き出しラップは PC 専用の sticky/aspect-ratio を解除し、中の ul にレイアウトを任せる */
+  .soko__bubbles-wrap {
+    position: static;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
   /* 吹き出しは本文の上に回し、絶対配置をやめて横並び */
   .soko__bubbles {
     position: static;
+    inset: auto;
     width: 100%;
     max-width: 28.75rem;
     aspect-ratio: auto;
@@ -1462,7 +1508,10 @@ html.modal-open body {
     padding: 0;
   }
   .soko__bubbles .bubble {
-    position: static;
+    /* position:relative にして、中の .bubble__label / .bubble__click の
+       絶対配置の基準がこのボタン自身になるようにする（static だと基準が
+       .soko__inner まで遡ってしまい、ラベルが吹き出しの外に集まって見えていた） */
+    position: relative;
     width: clamp(9.375rem, 42vw, 12.5rem) !important;
     left: auto !important;
     top: auto !important;
