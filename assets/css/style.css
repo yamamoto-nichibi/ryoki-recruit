@@ -1222,7 +1222,7 @@ html.modal-open body {
     order: 1;
     width: clamp(13rem, 68vw, 24rem);
     /* 本文と同じく左のガイド線から少し離す */
-    margin: -1.125rem auto 0 1rem;
+    margin: -0.875rem auto 0 1rem;
   }
   /* 環境・福祉は <picture> で包んでいるため、flex の直接の子は picture 側になる。
      order・上余白は picture に持たせ、img（.modal__sub）は img が直接の子の
@@ -1236,10 +1236,10 @@ html.modal-open body {
     width: 82%;
     max-width: none;
     max-height: none;
-    margin: 1.25rem auto 0;
+    margin: 1rem auto 0;
   }
   .modal--story .modal__inner > picture {
-    margin: 1.25rem 0 0;
+    margin: 1rem 0 0;
   }
   .modal--story .modal__inner > picture .modal__sub {
     margin: 0 auto;
