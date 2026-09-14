@@ -280,11 +280,19 @@ html.modal-open body {
   padding: 0.4em clamp(1rem, 2.5vw, 2rem) 0.4em clamp(1.25rem, 4vw, 4.375rem);
   color: var(--color-text);
 }
-.fv__copy-line--accent {
-  color: var(--color-primary);
+/* 段落の区切り（空行ぶん）：グループの先頭行にだけ上マージンを付ける */
+.fv__copy-line.fv__copy-group-start {
+  margin-top: 0.6em;
 }
-.fv__copy-line--box {
-  padding: 0.1em 0.4em;
+/* ロゴ行：文字行と同じ白帯の上に、ロゴマークを載せる */
+.fv__copy-logo {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.fv__copy-logo img {
+  display: block;
+  height: clamp(1.5rem, 2.6vw, 2.25rem);
+  width: auto;
 }
 
 @keyframes fvRight {
