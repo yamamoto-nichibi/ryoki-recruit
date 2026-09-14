@@ -45,6 +45,27 @@
     });
   }
 
+  /* --- 3b. #more の背景動画：動きを減らす設定なら停止し poster を見せる --- */
+  var moreVideo = document.querySelector(".more__bg");
+  if (moreVideo) {
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var applyMotionPref = function () {
+      if (reduceMotion.matches) {
+        moreVideo.removeAttribute("autoplay");
+        moreVideo.pause();
+      } else if (moreVideo.paused) {
+        var p = moreVideo.play();
+        if (p && typeof p.catch === "function") p.catch(function () {});
+      }
+    };
+    applyMotionPref();
+    if (typeof reduceMotion.addEventListener === "function") {
+      reduceMotion.addEventListener("change", applyMotionPref);
+    } else if (typeof reduceMotion.addListener === "function") {
+      reduceMotion.addListener(applyMotionPref);
+    }
+  }
+
   /* --- 4. 「そこにいるリョーキ」：吹き出し → モーダル --- */
   var lastFocused = null;
 
