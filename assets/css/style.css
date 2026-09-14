@@ -1471,6 +1471,9 @@ html.modal-open body {
   .soko__inner { display: flex; flex-direction: column; align-items: center; }
   .soko__bubbles-head { display: block; width: 100%; text-align: center; }
 
+  /* 「何の会社？」ブロックと「必要なところに、リョーキがいる。」ブロックの間を、他セクション間の余白と揃える */
+  .soko__text { margin-top: clamp(3rem, 10vh, 7rem); }
+
   /* 画面が狭いと左にはみ出すため、ペットボトルは右横に戻す */
   .soko__set--env .soko__set-photo {
     left: 100%;
