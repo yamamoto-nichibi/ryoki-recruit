@@ -1058,6 +1058,7 @@ body {
   scroll-margin-top: var(--header-h);
   background-color: #fff;
   color: var(--color-text);
+  border-top: 1.5px solid var(--color-text);
 }
 .modal--story .modal__inner {
   max-width: 56rem;
@@ -1132,6 +1133,19 @@ body {
   .modal--story .modal__logo-group {
     width: fit-content;
     margin-inline: auto;
+  }
+
+  /* セクション間の区切り線を、#liken などと同じくコンテンツ幅に揃える */
+  .modal--story {
+    padding-top: 0;
+    border-top: none;
+  }
+  .modal--story .modal__inner {
+    padding-inline: 0;
+    padding-top: clamp(2rem, 6vh, 4rem);
+    width: calc(100% - 2 * var(--container-pad));
+    margin-inline: auto;
+    border-top: 1.5px solid var(--color-text);
   }
 }
 
