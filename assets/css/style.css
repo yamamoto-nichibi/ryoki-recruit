@@ -1589,7 +1589,7 @@ html.modal-open body {
     width: clamp(4.5rem, 10vw, 8.5rem);
   }
   .need__collage img:nth-child(3) {
-    top: 55%;
+    top: 23%;
   }
   .site-footer__links a { font-size: 12px; }
   .site-footer__copy { font-size: 10px; }
