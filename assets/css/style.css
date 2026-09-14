@@ -321,8 +321,6 @@ html.modal-open body {
   .fv__tile {
     width: calc(var(--w, 50%) + 1px);
     height: calc(var(--h, 16.667%) + 1px);
-    animation: none;
-    opacity: 1;
   }
 
   .fv__tile:nth-child(3),    /* env-attach    */
