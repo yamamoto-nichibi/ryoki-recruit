@@ -1422,7 +1422,7 @@ html.modal-open body {
   font-size: clamp(16px, 2vw, 1.3rem);
 }
 
-/* --- クロージング（帯コラージュ＋筆文字） --- */
+/* --- クロージング（1枚の写真＋筆文字） --- */
 .closing {
   position: relative;
   background: #fff;
@@ -1430,13 +1430,14 @@ html.modal-open body {
 }
 .closing__strip {
   display: flex;
-  gap: 0;               /* 写真同士は隙間なく連結（白い線を出さない） */
+  gap: 0;
 }
 .closing__strip img {
   flex: 1 1 0;
   min-width: 0;
-  height: clamp(13.75rem, 34vw, 28.75rem);
+  height: clamp(18rem, 46vw, 34rem);
   object-fit: cover;
+  object-position: 50% 25%;   /* 夕日と人物の上半身が収まる位置を優先 */
   display: block;
 }
 .closing__catch {
@@ -1582,6 +1583,5 @@ html.modal-open body {
 @media (max-width: 640px) {
   .more__btn { min-width: min(100%, 20rem); }
   .need__collage img:nth-child(5) { display: none; }
-  .closing__strip img:nth-child(n + 4) { display: none; }
-  .closing__strip img { height: clamp(12.5rem, 52vw, 18.75rem); }
+  .closing__strip img { height: clamp(20rem, 100vw, 30rem); }
 }
