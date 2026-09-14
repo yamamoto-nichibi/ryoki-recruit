@@ -709,18 +709,13 @@ html.modal-open body {
 }
 
 /* --- リョーキで働く、とは（外部リンクCTA） --- */
-.work-cta-wrap {
-  display: flex;
-  justify-content: center;
-  padding: clamp(2rem, 6vw, 3.5rem) 1.5rem;
-  background: #000;
-}
 .work-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   min-width: min(100%, 18.75rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
   padding: 1.125rem 2.25rem;
   background: #173089;
   color: #fff;
@@ -1349,28 +1344,8 @@ html.modal-open body {
   text-align: center;
   overflow: hidden;
 }
-/* 背景動画（フルブリード。読み込み前・非対応時は crowd.jpg を敷く） */
-.more__bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  background: #10151b url("../images/fv/crowd.jpg") center / cover no-repeat;
-  pointer-events: none;
-}
-/* 動画の上に暗いスクリム（白文字の可読性を確保） */
-.more::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(rgba(16, 21, 27, 0.7), rgba(16, 21, 27, 0.82));
-}
 .more__inner {
   position: relative;
-  z-index: 2;
   max-width: 47.5rem;
   margin-inline: auto;
   padding-inline: var(--container-pad);
