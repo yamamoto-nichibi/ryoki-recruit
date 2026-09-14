@@ -1212,8 +1212,8 @@ body {
 
 /* --- リョーキという会社を、人にたとえると --- */
 .liken {
-  padding-top: clamp(6rem, 20vh, 14rem);
-  padding-bottom: clamp(6rem, 20vh, 14rem);
+  padding-top: clamp(2rem, 6vh, 4rem);
+  padding-bottom: clamp(2rem, 6vh, 4rem);
   border-top: 1.5px solid var(--color-text);
 }
 .liken__inner {
@@ -1273,11 +1273,12 @@ body {
   justify-content: center;
   min-height: 100vh;
   min-height: 100dvh;
-  padding-block: clamp(3rem, 10vh, 7rem);
+  padding-block: clamp(2rem, 6vh, 4rem);
   background: #fff;
   color: var(--color-text);
   text-align: left;
   overflow: hidden;
+  border-top: 1.5px solid var(--color-text);
 }
 .more__photo {
   display: block;
@@ -1377,9 +1378,23 @@ body {
   /* #liken 上の区切り線を、#soko の区切り線と同じ見た目に（全幅ではなくコンテンツ幅に揃える） */
   .liken {
     padding-top: 0;
+    padding-bottom: clamp(2rem, 6vh, 4rem);
     border-top: none;
   }
   .liken__inner {
+    padding-inline: 0;
+    padding-top: clamp(2rem, 6vh, 4rem);
+    width: calc(100% - 2 * var(--container-pad));
+    margin-inline: auto;
+    border-top: 1.5px solid var(--color-text);
+  }
+
+  /* #more 上の区切り線も、#liken / #soko と同じくコンテンツ幅に揃える */
+  .more {
+    padding-top: 0;
+    border-top: none;
+  }
+  .more__inner {
     padding-inline: 0;
     padding-top: clamp(2rem, 6vh, 4rem);
     width: calc(100% - 2 * var(--container-pad));
