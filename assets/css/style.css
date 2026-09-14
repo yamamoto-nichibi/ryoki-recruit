@@ -721,7 +721,9 @@ body {
 /* --- リョーキで働く、とは（外部リンクCTA） --- */
 .work-cta-wrap {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
   padding: clamp(2rem, 6vw, 3.5rem) 1.5rem;
   background: #000;
 }
@@ -729,6 +731,12 @@ body {
   .work-cta-wrap {
     padding-top: 0;
   }
+}
+.work-cta__logo {
+  display: block;
+  width: clamp(14rem, 32vw, 22rem);
+  height: auto;
+  color: #fff;
 }
 .work-cta {
   display: inline-flex;
@@ -1317,18 +1325,6 @@ body {
   width: 100%;
   height: auto;   /* 上下をクロップせず、写真本来の縦横比のまま表示 */
   display: block;
-}
-.closing__catch {
-  position: absolute;
-  left: 50%;
-  top: 78%;
-  width: clamp(20rem, 56vw, 56rem);
-  height: auto;
-  transform: translate(-50%, 0%);
-  /* 白抜き文字なので、明るい写真の上でも読めるよう暗いシャドウで浮かせる */
-  filter:
-    drop-shadow(0 0.25rem 0.875rem rgba(15, 20, 26, 0.55))
-    drop-shadow(0 0 2.5rem rgba(15, 20, 26, 0.45));
 }
 
 /* --- 後半セクションのレスポンシブ --- */
