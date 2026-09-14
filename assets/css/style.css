@@ -211,8 +211,7 @@ html.modal-open body {
   min-height: 100vh;
   min-height: 100dvh;
   background: #fff;
-  /* .fv__catch を次セクションへはみ出させるため clip しない。
-     タイルのはみ出しは .fv__stage 側の overflow:hidden で処理。 */
+  /* タイルのはみ出しは .fv__stage 側の overflow:hidden で処理。 */
   overflow: visible;
 }
 
@@ -254,18 +253,21 @@ html.modal-open body {
   to   { opacity: 1; }
 }
 
-/* --- コピー（行ごとに白背景。左端は画面端から、右端は文字数ででこぼこ） --- */
+/* --- コピー（行ごとに白背景。ブロック全体を中央寄せ、各行は文字幅ぴったりで左右でこぼこ） --- */
 .fv__copy {
   position: absolute;
   left: 0;
+  right: 0;
   top: 24%;
   z-index: 30;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  width: fit-content;
   background: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;   /* 各行の白背景を文字幅ぴったりに（右端でこぼこ） */
+  align-items: center;
+  text-align: center;
   font-size: clamp(17px, 1.8vw, 1.4rem);
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -276,8 +278,7 @@ html.modal-open body {
 .fv__copy-line {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(0.1875rem);
-  /* 左は画面端から少しゆとり、右は文字のすぐ後ろまで */
-  padding: 0.4em clamp(1rem, 2.5vw, 2rem) 0.4em clamp(1.25rem, 4vw, 4.375rem);
+  padding: 0.4em clamp(1.25rem, 3vw, 3rem);
   color: var(--color-text);
 }
 /* 段落の区切り（空行ぶん）：グループの先頭行にだけ上マージンを付ける */
@@ -298,24 +299,6 @@ html.modal-open body {
 @keyframes fvRight {
   from { opacity: 0; transform: translateX(-18px); }
   to   { opacity: 1; transform: translateX(0); }
-}
-
-/* --- 大キャッチコピー（右端・一回り小さく・次セクションへ約1/5はみ出す） --- */
-.fv__catch {
-  position: absolute;
-  right: 0;
-  /* マイナス bottom で FV の下端より下へ。ロゴ高さ ≒ 幅/3.7、その約1/5ぶん下げる */
-  bottom: clamp(-3.8rem, -3.4vw, -1.8rem);
-  width: clamp(17rem, 58vw, 70rem);
-  height: auto;
-  z-index: 31;
-  animation: fvCatchIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: var(--d, 0s);
-}
-
-@keyframes fvCatchIn {
-  from { opacity: 0; transform: translateY(1.5rem) scale(0.96); }
-  to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
 
 /* --- スマホ：面付けを 2 列 × 6 段のベタ組みに組み替える（4 枚は非表示） ---
@@ -356,22 +339,13 @@ html.modal-open body {
 
   .fv__copy {
     left: 0;
-    right: auto;
+    right: 0;
     top: calc(var(--header-h) + 1.5rem);
     bottom: auto;
     font-size: 1.15rem;
   }
   .fv__copy-line {
     padding: 0.4em 0.9rem 0.4em 0.9rem;
-  }
-
-  .fv__catch {
-    left: auto;
-    right: 0;
-    bottom: -1.5rem;
-    top: auto;
-    width: 98%;
-    max-width: 98%;
   }
 }
 
@@ -381,8 +355,7 @@ html.modal-open body {
     animation: none !important;
     opacity: 1 !important;
   }
-  .fv__copy,
-  .fv__catch {
+  .fv__copy {
     animation: none !important;
     opacity: 1 !important;
   }
@@ -392,8 +365,7 @@ html.modal-open body {
   animation: none !important;
   opacity: 1 !important;
 }
-.fv-static .fv__copy,
-.fv-static .fv__catch {
+.fv-static .fv__copy {
   animation: none !important;
   opacity: 1 !important;
 }
