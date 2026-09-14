@@ -288,6 +288,12 @@ html.modal-open body {
 .fv__copy-line.fv__copy-gap-2x {
   margin-top: 1.2em;
 }
+/* PC版：「その答えを、少しだけ。」は他の行と同じ余白に戻す（スマホ版は2倍のまま） */
+@media (min-width: 641px) {
+  .fv__copy-answer {
+    margin-top: 0.6em;
+  }
+}
 /* ロゴ行：文字行と同じ白帯の上に、ロゴマークを載せる */
 .fv__copy-logo {
   padding-top: 0.5em;
