@@ -709,27 +709,33 @@ html.modal-open body {
 }
 
 /* --- リョーキで働く、とは（外部リンクCTA） --- */
+.work-cta-wrap {
+  display: flex;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 3.5rem) 1.5rem;
+  background: #fff;
+}
 .work-cta {
-  position: relative;
-  display: block;
-  padding: 1.5rem 3.5rem;
-  background: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-width: min(100%, 18.75rem);
+  padding: 1.125rem 2.25rem;
+  background: #173089;
   color: #fff;
   font-weight: 700;
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-size: clamp(1rem, 2vw, 1.125rem);
   text-align: center;
   letter-spacing: 0.02em;
 }
 .work-cta:hover {
-  background: var(--color-primary-dark);
+  background: #0f2160;
 }
 .work-cta__icon {
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  width: 1.25rem;
-  height: 1.25rem;
-  transform: translateY(-50%);
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
 }
 
 .site-footer {
