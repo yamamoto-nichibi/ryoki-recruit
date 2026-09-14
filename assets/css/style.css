@@ -1110,7 +1110,7 @@ body {
 .num-badge {
   display: block;
   flex-shrink: 0;
-  height: 0.72em;
+  height: 0.95em;
   width: auto;
   color: var(--color-text);
 }
@@ -1296,9 +1296,10 @@ body {
   align-items: center;
   gap: 0.6em;
   margin: 0 0 1.5rem;
-  font-size: clamp(18px, 2.4vw, 1.5rem);
+  font-size: clamp(24px, 3.4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
+  line-height: 1.32;
 }
 .more__head .num-badge {
   color: #fff;
@@ -1374,6 +1375,14 @@ body {
   .liken__inner { grid-template-columns: 1fr; }
   .liken__photo { position: static; max-width: 28.75rem; }
   .soko__bubbles-head { margin-bottom: 68px; }
+
+  /* 「05 もし、リョーキで働くとしたら。」は文字数が多く折り返すため、数字は先頭行の高さに合わせる */
+  .more__head {
+    align-items: flex-start;
+  }
+  .more__head .num-badge {
+    margin-top: 0.18em;
+  }
 
   /* #soko--text 上の区切り線を、#liken と同じくコンテンツ幅に揃える */
   .soko--text {
