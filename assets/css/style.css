@@ -709,23 +709,30 @@ html.modal-open body {
 }
 
 .site-footer {
-  background: #1a1a1a;
+  background: #000;
   color: #fff;
   padding-block: 3rem;
   text-align: center;
 }
 
-.site-footer__logo {
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
 .site-footer__links {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 0 0 1.25rem;
   font-size: var(--fs-small);
+}
+
+.site-footer__links a {
+  color: #fff;
+  padding: 0 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  line-height: 1;
+}
+
+.site-footer__links a:last-child {
+  border-right: none;
 }
 
 .site-footer__links a:hover {
@@ -1448,23 +1455,6 @@ html.modal-open body {
   filter:
     drop-shadow(0 0.25rem 0.875rem rgba(15, 20, 26, 0.55))
     drop-shadow(0 0 2.5rem rgba(15, 20, 26, 0.45));
-}
-
-/* --- フッター（デザイン差し替え：白ベース） --- */
-.site-footer {
-  background: #fff;
-  color: var(--color-text-muted);
-  padding-block: 3.5rem;
-  border-top: 1px solid var(--color-border);
-  text-align: center;
-}
-.site-footer__logo { display: inline-block; }
-.site-footer__logo img { width: 8.25rem; height: auto; }
-.site-footer__copy {
-  margin: 1rem 0 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  color: var(--color-text-muted);
 }
 
 /* --- 後半セクションのレスポンシブ --- */
