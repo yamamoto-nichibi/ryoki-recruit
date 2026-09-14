@@ -1450,7 +1450,7 @@ html.modal-open body {
   top: 50%;
   width: clamp(16.25rem, 44vw, 45rem);
   height: auto;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);   /* 自身の高さの半分ぶん下げる */
   /* 白抜き文字なので、明るい写真の上でも読めるよう暗いシャドウで浮かせる */
   filter:
     drop-shadow(0 0.25rem 0.875rem rgba(15, 20, 26, 0.55))
