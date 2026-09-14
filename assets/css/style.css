@@ -477,83 +477,9 @@ html.modal-open body {
   /* 次セクションの写真は最初から表示（スクロールでのフェードインはしない） */
 }
 
-/* 中央より上の白いコピー（写真の集まる前面に載せる） */
-.concept__card {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: min(36.25rem, 88vw);
-  background: #fff;
-  padding: clamp(1.625rem, 4vw, 3rem) clamp(1.375rem, 4.5vw, 3.25rem);
-  box-shadow:
-    0 0.25rem 0.875rem -6px rgba(20, 30, 45, 0.22),
-    0 2.125rem 4.375rem -24px rgba(20, 30, 45, 0.5);
-  text-align: center;
-  z-index: 20;                 /* すべての写真タイルより前面 */
-  opacity: 0;
-  transform: translate(-50%, calc(-50% + 1rem));
-  transition: opacity 0.9s ease 0.2s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-}
-
-.concept.is-visible .concept__card {
-  opacity: 1;
-  transform: translate(-50%, -50%);
-}
-
-.concept__lead {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.625rem;
-  margin: 0 0 1.75rem;
-  font-weight: 700;
-  font-size: clamp(16px, 1.9vw, 1.2rem);
-  line-height: 1.48;
-}
-
-.concept__lead span {
-  width: fit-content;
-  border: 1.5px solid var(--color-text);
-  padding: 0.5rem 0.75rem;
-}
-
-.concept__body {
-  margin: 0;
-  font-size: clamp(16px, 1.8vw, 1.1rem);
-  line-height: 1.96;
-  color: var(--color-text);
-}
-
-.concept__body + .concept__body {
-  margin-top: 1.25rem;
-}
-
-.concept__body b {
-  font-size: clamp(16px, 1.9vw, 1.2rem);
-  font-weight: 700;
-  border: 1px solid var(--color-text);
-  padding: 1px 0.5rem;
-  margin: 0 2px;
-}
-
-.concept__question {
-  font-size: clamp(16px, 1.9vw, 1.2rem);
-  font-weight: 700;
-}
-
-.concept__answer {
-  color: var(--color-text);
-}
-
 /* --- タブレット：方眼を少し詰める --- */
 @media (max-width: 900px) {
   .concept__grid { aspect-ratio: 1920 / 2200; }
-
-  /* 文字サイズの下限を16pxに（本文とリード文で少しジャンプ率をつける） */
-  .concept__body { font-size: 1rem; }
-  .concept__lead,
-  .concept__body b,
-  .concept__question { font-size: 1.0625rem; }
 }
 
 /* --- スマホ：PC と同じく写真はトリミングせず height:auto で元の比率のまま、
@@ -564,15 +490,16 @@ html.modal-open body {
   .concept { margin-top: -1vh; }
 
   .concept__grid {
-    /* カード（高さ約 31rem）の下 3/4 あたりまで写真が続くよう、あえて縦に伸ばしている。
-       写真同士の隙間が空くのは意図どおり。 */
-    aspect-ratio: 100 / 163.35;
+    /* 最下段の写真を削除した分、残った写真の高さに合わせて短くしている */
+    aspect-ratio: 100 / 104.5;
   }
 
   .concept__grid img:nth-child(2),   /* people-phone       */
   .concept__grid img:nth-child(3),   /* welfare-warehouse  */
   .concept__grid img:nth-child(6),   /* const-excavator    */
   .concept__grid img:nth-child(8),   /* env-attach-2       */
+  .concept__grid img:nth-child(9),   /* const-training-2（最下段：削除）*/
+  .concept__grid img:nth-child(10),  /* people-team-2（最下段：削除）*/
   .concept__grid img:nth-child(11),  /* const-cranes-2     */
   .concept__grid img:nth-child(12) { /* const-steel-2      */
     display: none;
@@ -585,26 +512,6 @@ html.modal-open body {
   /* 右コラム：site → people-test を縦積み */
   .concept__grid img:nth-child(4) { --l: 60% !important; --t: 0%     !important; --w: 40% !important; } /* site */
   .concept__grid img:nth-child(7) { --l: 60% !important; --t: 44.06% !important; --w: 40% !important; } /* people-test */
-
-  /* 最下段：const-training-2 / people-team-2 を横並びで一番下に */
-  .concept__grid img:nth-child(9)  { --l: 0%  !important; --t: 72.46% !important; --w: 48% !important; } /* const-training-2 */
-  .concept__grid img:nth-child(10) { --l: 52% !important; --t: 72.46% !important; --w: 48% !important; } /* people-team-2 */
-
-  /* スマホは絶対配置をやめ通常フローに戻す。カードの高さが折り返しで変わっても
-     （文字数や端末フォントの違いで行数が変わっても）次セクションに食い込んだり
-     はみ出しをクリップされたりしないようにするため。写真への重なりはマイナス
-     margin-top で見た目だけ演出し、カード下の余白は margin-bottom で確保する。 */
-  .concept__card,
-  .fv-static .concept__card,
-  .concept.is-visible .concept__card {
-    position: relative;   /* static だと z-index が効かず写真の下に隠れるため relative を維持 */
-    left: auto;
-    top: auto;
-    transform: none;
-    margin: -26.45rem auto 5rem;
-    width: min(84vw, 24rem);
-    padding: 3rem 1.25rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -613,31 +520,12 @@ html.modal-open body {
     transition: none !important;
     transform: none !important;
   }
-  .concept__card {
-    opacity: 1 !important;
-    transition: none !important;
-  }
 }
 
 .fv-static .concept__grid img {
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
-}
-.fv-static .concept__card {
-  opacity: 1 !important;
-  transition: none !important;
-}
-
-/* デスクトップだけ中央寄せの translate を効かせる（スマホは static 配置なので不要） */
-@media (min-width: 641px) {
-  .fv-static .concept__card,
-  .concept.is-visible .concept__card {
-    transform: translate(-50%, -50%) !important;
-  }
-}
-@media (min-width: 641px) and (prefers-reduced-motion: reduce) {
-  .concept__card { transform: translate(-50%, -50%) !important; }
 }
 
 /* 募集要項テーブル */
