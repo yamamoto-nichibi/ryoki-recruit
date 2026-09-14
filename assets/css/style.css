@@ -1550,7 +1550,7 @@ html.modal-open body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.125rem;
     padding: 0;
   }
   .soko__bubbles > li:nth-child(1) { transform: translateX(-15%); }
