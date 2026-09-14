@@ -1518,6 +1518,7 @@ html.modal-open body {
 
   /* #liken 上の区切り線を、#soko の区切り線と同じ見た目に（全幅ではなくコンテンツ幅に揃える） */
   .liken {
+    padding-top: 0;
     border-top: none;
   }
   .liken__inner {
