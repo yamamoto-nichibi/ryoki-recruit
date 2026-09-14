@@ -724,13 +724,8 @@ body {
   flex-direction: column;
   align-items: center;
   gap: clamp(1.5rem, 4vw, 2.5rem);
-  padding: clamp(2rem, 6vw, 3.5rem) 1.5rem;
+  padding: 0 1.5rem clamp(2rem, 6vw, 3.5rem);
   background: #000;
-}
-@media (min-width: 901px) {
-  .work-cta-wrap {
-    padding-top: 0;
-  }
 }
 .work-cta__catch {
   margin: 0;
@@ -740,11 +735,22 @@ body {
   text-align: center;
   font-size: clamp(15px, 1.8vw, 1.05rem);
 }
+@media (max-width: 900px) {
+  .work-cta__catch {
+    align-self: flex-start;
+    text-align: left;
+  }
+}
 .work-cta__logo {
   display: block;
   width: clamp(14rem, 32vw, 22rem);
   height: auto;
   color: #fff;
+}
+@media (max-width: 900px) {
+  .work-cta__logo {
+    width: 42rem;
+  }
 }
 .work-cta {
   display: inline-flex;
@@ -762,6 +768,9 @@ body {
 }
 .more__inner .work-cta {
   margin-top: clamp(0.5rem, 2vw, 1rem);
+}
+.work-cta-wrap .work-cta {
+  margin-top: clamp(1rem, 3vw, 2rem);
 }
 .work-cta:hover {
   background: #0f2160;
@@ -1110,7 +1119,7 @@ body {
 .num-badge {
   display: block;
   flex-shrink: 0;
-  height: 1.25em;
+  height: 1.65em;
   width: auto;
   color: var(--color-text);
 }
@@ -1251,7 +1260,7 @@ body {
   margin-bottom: 0;
 }
 
-/* --- More Information（ダーク） --- */
+/* --- More Information --- */
 .more {
   position: relative;
   display: flex;
@@ -1260,9 +1269,9 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   padding-block: clamp(3rem, 10vh, 7rem);
-  background: #10151b;
-  color: #fff;
-  text-align: center;
+  background: #fff;
+  color: var(--color-text);
+  text-align: left;
   overflow: hidden;
 }
 .more__photo {
@@ -1288,9 +1297,6 @@ body {
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.32;
-}
-.more__head .num-badge {
-  color: #fff;
 }
 .more__copy {
   margin: 0 0 1.5rem;
