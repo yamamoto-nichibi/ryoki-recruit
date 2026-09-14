@@ -1099,7 +1099,6 @@ body {
   color: var(--color-text);
 }
 .modal--story .modal__text--em {
-  margin-top: 1.75em;
   margin-bottom: 0;
   color: var(--color-text);
   font-weight: 700;
@@ -1107,7 +1106,10 @@ body {
 }
 
 /* 最後の一文＋「そこに、リョーキ。」ロゴを1組のロゴマークとして扱う。
-   色をセクションごとの事業カラーにそろえ、間隔を詰めて左揃えに。ロゴは3倍の大きさ。 */
+   色をセクションごとの事業カラーにそろえ、グループ内は文字・ロゴとも左揃え。ロゴは3倍の大きさ。 */
+.modal--story .modal__logo-group {
+  margin-top: 1.75em;
+}
 .modal--story .modal__logo {
   display: block;
   width: clamp(20rem, 46vw, 29rem);
@@ -1126,11 +1128,9 @@ body {
   .modal--story .modal__lead,
   .modal--story .modal__text { font-size: clamp(1rem, 1.05vw, 1.075rem); }
 
-  /* 最後の一文＋ロゴのグループはスマホのみ中央寄せ */
-  .modal--story .modal__text--em {
-    text-align: center;
-  }
-  .modal--story .modal__logo {
+  /* 最後の一文＋ロゴのグループ全体はスマホのみ中央寄せ（グループ内は左揃えのまま） */
+  .modal--story .modal__logo-group {
+    width: fit-content;
     margin-inline: auto;
   }
 }
