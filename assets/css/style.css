@@ -717,7 +717,7 @@ html.modal-open body {
 }
 @media (min-width: 901px) {
   .work-cta-wrap {
-    padding-top: clamp(5rem, 12vw, 8rem);
+    padding-top: 0;
   }
 }
 .work-cta {
