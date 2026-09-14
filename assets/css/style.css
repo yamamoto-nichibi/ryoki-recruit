@@ -409,6 +409,9 @@ html.modal-open body {
   .fv__copy-question {
     font-size: 1.5em;
   }
+  .fv__scroll {
+    bottom: 0.5rem;
+  }
   .fv__copy-line {
     padding: 0.4em 0.9rem 0.4em 0.9rem;
   }
