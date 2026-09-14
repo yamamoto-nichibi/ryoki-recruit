@@ -1054,6 +1054,8 @@ body {
 
 /* --- 吹き出しの詳細セクション（建設・環境・福祉）：写真＋本文のシンプルな1カラムレイアウト --- */
 .modal--story {
+  min-height: 50vh;
+  min-height: 50dvh;
   padding-block: clamp(3rem, 10vh, 7rem);
   scroll-margin-top: var(--header-h);
   background-color: #fff;
