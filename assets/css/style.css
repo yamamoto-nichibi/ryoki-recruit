@@ -258,7 +258,7 @@ html.modal-open body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 24%;
+  top: 18%;
   z-index: 30;
   margin: 0 auto;
   padding: 0;
@@ -268,7 +268,7 @@ html.modal-open body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: clamp(16px, 1.9vw, 1.2rem);
+  font-size: clamp(15px, 1.7vw, 1.1rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   animation: fvRight 0.9s ease both;
@@ -340,9 +340,9 @@ html.modal-open body {
   .fv__copy {
     left: 0;
     right: 0;
-    top: calc(var(--header-h) + 1.5rem);
+    top: calc(var(--header-h) + 0.75rem);
     bottom: auto;
-    font-size: 1.0625rem;
+    font-size: 1rem;
   }
   .fv__copy-line {
     padding: 0.4em 0.9rem 0.4em 0.9rem;
