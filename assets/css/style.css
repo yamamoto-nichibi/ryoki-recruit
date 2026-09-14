@@ -1102,16 +1102,23 @@ body {
   margin-bottom: 0;
   color: var(--color-text);
   font-weight: 700;
+  text-align: left;
 }
 
-/* 「そこに、リョーキ。」ロゴ（FVと同じSVG、色違い） */
+/* 最後の一文＋「そこに、リョーキ。」ロゴを1組のロゴマークとして扱う。
+   色をセクションごとの事業カラーにそろえ、間隔を詰めて左揃えに。 */
 .modal--story .modal__logo {
   display: block;
   width: clamp(9rem, 20vw, 13rem);
   height: auto;
-  color: var(--color-primary);
-  margin-top: clamp(2rem, 5vw, 3rem);
+  margin-top: 0.5rem;
 }
+#story-build .modal__text--em,
+#story-build .modal__logo { color: #f5a637; }
+#story-env .modal__text--em,
+#story-env .modal__logo { color: #69be8d; }
+#story-welfare .modal__text--em,
+#story-welfare .modal__logo { color: #7fcef4; }
 
 @media (max-width: 820px) {
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
