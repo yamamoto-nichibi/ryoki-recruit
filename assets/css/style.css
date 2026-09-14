@@ -1304,50 +1304,6 @@ body {
   font-size: clamp(13.76px, 1.6vw, 0.98rem);
 }
 
-/* --- 必要なところに、いる。 --- */
-.need {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  min-height: 100dvh;
-  padding-block: clamp(3rem, 10vh, 7rem);
-  text-align: center;
-  overflow: hidden;
-}
-.need__collage {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.need__collage img {
-  position: absolute;
-  width: clamp(6rem, 13vw, 11.5rem);
-  height: auto;
-}
-.need__collage img:nth-child(1) { left: 2%;  top: 6%; }
-.need__collage img:nth-child(2) { left: 7%;  bottom: 4%; }
-.need__collage img:nth-child(3) { right: 3%; top: 10%; }
-.need__collage img:nth-child(4) { right: 8%; bottom: 6%; }
-.need__collage img:nth-child(5) { left: 45%; bottom: -3%; }
-.need__text { position: relative; z-index: 1; }
-.need__lead {
-  margin: 0 0 1.75rem;
-  font-size: clamp(19.2px, 2.9vw, 1.85rem);
-  font-weight: 700;
-  line-height: 1.64;
-}
-.need__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  margin: 0;
-  font-weight: 700;
-  font-size: clamp(16px, 2vw, 1.3rem);
-}
-
 /* --- クロージング（1枚の写真＋筆文字） --- */
 .closing {
   position: relative;
@@ -1400,9 +1356,7 @@ body {
   }
 
   /* スマホでは全画面高さをやめて内容なりに */
-  .more,
-  .need { min-height: 0; }
-  .need { padding-top: clamp(6rem, 20vh, 14rem); }
+  .more { min-height: 0; }
 
   /* 見出しをもう少し大きく */
   .lead-head { font-size: clamp(26px, 4vw, 2.1rem); }
@@ -1503,16 +1457,6 @@ body {
 }
 
 @media (max-width: 640px) {
-  .need__collage img:nth-child(5) { display: none; }
-  /* 左下は「循環にも。」、右上は「街にも。」の高さに合わせて移動。左下は少し縮小 */
-  .need__collage img:nth-child(2) {
-    top: 65%;
-    bottom: auto;
-    width: clamp(4.5rem, 10vw, 8.5rem);
-  }
-  .need__collage img:nth-child(3) {
-    top: 23%;
-  }
   .site-footer__links a { font-size: 12px; }
   .site-footer__copy { font-size: 10px; }
 }
