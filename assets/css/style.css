@@ -1125,6 +1125,14 @@ body {
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
   .modal--story .modal__lead,
   .modal--story .modal__text { font-size: clamp(1rem, 1.05vw, 1.075rem); }
+
+  /* 最後の一文＋ロゴのグループはスマホのみ中央寄せ */
+  .modal--story .modal__text--em {
+    text-align: center;
+  }
+  .modal--story .modal__logo {
+    margin-inline: auto;
+  }
 }
 
 /* PC：写真を左カラムに、本文を右カラムに横並び。写真は元の縦長比率のままトリミングしない */
