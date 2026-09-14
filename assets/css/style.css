@@ -1086,7 +1086,7 @@ body {
 .modal--story .modal__photo {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 6;
   object-fit: cover;
   margin-bottom: clamp(2rem, 5vw, 3rem);
 }
@@ -1110,7 +1110,7 @@ body {
 .num-badge {
   display: block;
   flex-shrink: 0;
-  height: 0.95em;
+  height: 1.25em;
   width: auto;
   color: var(--color-text);
 }
@@ -1187,7 +1187,7 @@ body {
     align-items: start;
   }
   .modal--story .modal__photo {
-    aspect-ratio: 749 / 959;
+    aspect-ratio: 321 / 274;
     margin-bottom: 0;
   }
   .modal--story .modal__body-wrap {
