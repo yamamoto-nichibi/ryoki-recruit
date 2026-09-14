@@ -344,7 +344,10 @@ html.modal-open body {
     right: 0;
     top: calc(var(--header-h) + 0.75rem);
     bottom: auto;
-    font-size: 1rem;
+    font-size: 1.125rem;
+  }
+  .fv__copy-question {
+    font-size: 1.5em;
   }
   .fv__copy-line {
     padding: 0.4em 0.9rem 0.4em 0.9rem;
