@@ -877,6 +877,7 @@ html.modal-open body {
   font-size: clamp(13.6px, 1.5vw, 0.92rem);
 }
 .soko__body--em {
+  margin-bottom: 0;
   font-weight: 700;
   font-size: clamp(16px, 1.9vw, 1.2rem);
 }
@@ -1347,6 +1348,9 @@ html.modal-open body {
   margin: 0 0 1.125rem;
   line-height: 1.84;
   font-size: clamp(13.6px, 1.5vw, 0.92rem);
+}
+.liken__body:last-child {
+  margin-bottom: 0;
 }
 
 /* --- More Information（ダーク） --- */
