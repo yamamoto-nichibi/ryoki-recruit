@@ -1,6 +1,6 @@
 # 株式会社リョーキ 採用LP
 
-新卒就活生向けの会社紹介ランディングページ。ビルドツールなしの静的HTML/CSS/JS構成。
+新卒就活生向けの会社紹介ランディングページ。静的HTML/CSS/JS構成、ビルドには Vite を使用（`npm run build` → `dist/` を社内サーバーへFTPアップロード）。
 
 ## フォルダ構成
 
@@ -146,16 +146,30 @@ html/
 
 ## 開発方法
 
-ビルド不要。ローカル確認は任意の静的サーバーで:
+Vite を使用。初回のみ依存パッケージをインストール:
 
 ```bash
-# 例: Python
-python -m http.server 8000
-# 例: Node (npxで)
-npx serve .
+npm install
 ```
 
-ブラウザで <http://localhost:8000> を開く。
+ローカル確認（ホットリロード付き）:
+
+```bash
+npm run dev
+```
+
+ブラウザで <http://localhost:5173> を開く。
+
+## ビルド & 社内サーバーへのアップロード
+
+本番用ファイルを `dist/` に出力:
+
+```bash
+npm run build
+```
+
+`dist/` フォルダの中身一式を、社内サーバーへ FTP クライアント（FileZilla など）で手動アップロードする。
+`npm run preview` で `dist/` の内容をローカルで最終確認できる。
 
 ## 本番前チェックリスト
 
