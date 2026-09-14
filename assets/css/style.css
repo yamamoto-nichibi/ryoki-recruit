@@ -1052,75 +1052,34 @@ body {
 .bubble--welfare:hover .bubble__shape { color: #7fcef4; }
 .bubble--welfare:hover .bubble__label { color: #7fcef4; }
 
-/* --- 吹き出しの詳細セクション：白地＋ガイド線で画面いっぱいの1ページ風レイアウト --- */
+/* --- 吹き出しの詳細セクション（建設・環境・福祉）：写真＋本文のシンプルな1カラムレイアウト --- */
 .modal--story {
-  --guide: #141414;                 /* ガイド線（黒） */
-  --gx1: 3vw;                       /* 写真の左端＝左ガイド線 */
-  --gx2: 44vw;                      /* 写真の右端＝ガイド線 */
-  --gx3: 49vw;                      /* 本文カラムの左（ガター）＝ガイド線 */
-  --gx4: calc(100vw - var(--gx1));  /* 本文カラムの右＝ガイド線 */
-  --gy1: 5vh;                       /* 上ガイド線（上端からの距離） */
-  --gy2: 5vh;                       /* 下ガイド線（下端からの距離） */
-  --nudge: 2px;                     /* 写真をほんのわずかにずらし、際の線を隠さないようにする */
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  padding-block: clamp(3rem, 10vh, 7rem);
   scroll-margin-top: var(--header-h);
   background-color: #fff;
   color: var(--color-text);
-  /* 写真・本文カラムの端に沿う黒い罫線
-     縦4本＝写真の左右／本文カラムの左右、横2本＝上下ガイド線を画面の端から端まで横断 */
-  background-image:
-    linear-gradient(var(--guide) 0 0),
-    linear-gradient(var(--guide) 0 0),
-    linear-gradient(var(--guide) 0 0),
-    linear-gradient(var(--guide) 0 0),
-    linear-gradient(var(--guide) 0 0),
-    linear-gradient(var(--guide) 0 0);
-  background-repeat: no-repeat;
-  background-size:
-    1px 100%, 1px 100%, 1px 100%, 1px 100%,
-    100% 1px, 100% 1px;
-  background-position:
-    left var(--gx1) top 0,
-    left var(--gx2) top 0,
-    left var(--gx3) top 0,
-    left var(--gx4) top 0,
-    left 0 top var(--gy1),
-    left 0 bottom var(--gy2);
 }
 .modal--story .modal__inner {
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-  padding: 0;
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
 }
 
-/* 左の大きな写真（749×959）。写真列のガイド線のすぐ内側に --nudge（2px）だけずらして置き、
-   際にできるごく細いすき間で下の罫線をそのまま見せる（隙間があるようには見えない程度） */
+/* メイン写真：横長にトリミングして設置 */
 .modal--story .modal__photo {
-  position: absolute;
-  left: calc(var(--gx1) + var(--nudge));
-  top: calc(var(--gy1) + var(--nudge));
-  width: calc(var(--gx2) - var(--gx1) - var(--nudge) * 2);
-  height: calc(100dvh - var(--gy1) - var(--gy2) - var(--nudge) * 2);
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
 }
 
-/* 本文ブロック（本文カラム左ガイド線の少し内側・上ガイド線から下げて） */
 .modal--story .modal__body-wrap {
-  position: absolute;
-  z-index: 2;   /* 下部の sub写真・筆文字コピーより前面に出し、文章が隠れないようにする */
-  left: calc(var(--gx3) + 2.5vw);
-  top: calc(var(--gy1) + 12vh);
-  width: 30vw;
-}
-#modal-welfare .modal__body-wrap {
-  top: calc(var(--gy1) + 8vh);
+  max-width: 40rem;
+  margin-inline: auto;
 }
 .modal--story .modal__heading {
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem;
   font-size: clamp(24px, 3.4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -1130,8 +1089,6 @@ body {
   margin: 0 0 1em;
   font-weight: 700;
   line-height: 1.6;
-  /* min/max は px 固定（rem だと 900〜1280px の間で html 側のフルイド縮小の
-     影響を受け、900px 直前だけ最小値を下回って見える段差が出るため） */
   font-size: clamp(16px, 1.2vw, 18px);
   color: var(--color-text);
 }
@@ -1147,109 +1104,16 @@ body {
   font-weight: 700;
 }
 
-/* 右下の切り抜き写真（機械のクラスターなど）。本文カラム右ガイド線にそろえる。
-   縦長の合成画像（modal_3_sub）でも崩れないよう幅・高さの両方をキャップ */
-.modal--story .modal__sub {
-  position: absolute;
-  right: calc(var(--gx1) - 1vw);
-  bottom: 22vh;
-  width: auto;
-  max-width: 24vw;
+/* 「そこに、リョーキ。」ロゴ（FVと同じSVG、色違い） */
+.modal--story .modal__logo {
+  display: block;
+  width: clamp(9rem, 20vw, 13rem);
   height: auto;
-  max-height: 40vh;
+  color: var(--color-primary);
+  margin-top: clamp(2rem, 5vw, 3rem);
 }
 
-/* 右下の筆文字コピー（685×184）。本文カラム右ガイド線にそろえ、下ガイド線の少し上 */
-.modal--story .modal__copy {
-  position: absolute;
-  right: calc(var(--gx1) - 1rem);
-  bottom: 2.5vh;
-  width: 34vw;
-  height: auto;
-}
-
-/* スマホ：縦積みにしつつ、PC 版と同じ「黒い罫線で囲む」デザイン言語を踏襲する。
-   左右2本・上下2本の罫線で額縁のように囲む。sub写真／筆文字コピーは PC と同じく
-   本文カラムの右端（＝右の罫線）にそろえる（中央寄せにしない）。 */
 @media (max-width: 820px) {
-  .modal--story {
-    --gx1: 5.5vw;   /* 左右の罫線位置（画面端からの距離） */
-    --gy1: 1.5rem;  /* 上の罫線位置 */
-    --gy2: 1.75rem; /* 下の罫線位置（セクション末尾からの距離） */
-    overflow-x: hidden; /* sub写真を右のガイド線からはみ出させても横スクロールさせない */
-    background-image:
-      linear-gradient(var(--guide) 0 0),
-      linear-gradient(var(--guide) 0 0),
-      linear-gradient(var(--guide) 0 0),
-      linear-gradient(var(--guide) 0 0);
-    background-repeat: no-repeat;
-    background-size: 1px 100%, 1px 100%, 100% 1px, 100% 1px;
-    background-position:
-      left var(--gx1) top 0,
-      right var(--gx1) top 0,
-      left 0 top var(--gy1),
-      left 0 bottom var(--gy2);
-    /* 左右2本（額縁の縦罫線）は固定。上下2本（原稿用紙の罫線）は中身と一緒にスクロール。 */
-    background-attachment: scroll, scroll, local, local;
-  }
-  .modal--story .modal__inner {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    padding: var(--gy1) var(--gx1) calc(var(--gy2) + 0.75rem);
-  }
-  .modal--story .modal__photo,
-  .modal--story .modal__body-wrap,
-  .modal--story .modal__sub,
-  .modal--story .modal__copy {
-    position: static;
-    transform: none;
-  }
-  .modal--story .modal__photo {
-    width: 100%;
-    max-width: 26.25rem;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    margin-inline: auto;
-  }
-  /* 本文は写真と違い、左右のガイド線から少し離す（ガイド線ぴったりにはしない） */
-  .modal--story .modal__body-wrap {
-    width: 100%;
-    max-width: 28.75rem;
-    margin-inline: auto;
-    padding-inline: 1rem;
-  }
-  /* 本文の直後に「そこに、リョーキ」→ 写真の順で並べる（order で並び替え。
-     DOM順は body-wrap → sub → copy のまま）。写真は枠内に収まるよう
-     左右にパディング分の余白を持たせて中央寄せ。
-     環境・福祉はスマホ用に用意した横長の合成画像に <picture> で差し替わる。 */
-  .modal--story .modal__copy {
-    order: 1;
-    width: clamp(13rem, 68vw, 24rem);
-    /* 本文と同じく左のガイド線から少し離す */
-    margin: -0.875rem auto 0 1rem;
-  }
-  /* 環境・福祉は <picture> で包んでいるため、flex の直接の子は picture 側になる。
-     order・上余白は picture に持たせ、img（.modal__sub）は img が直接の子の
-     場合（建設）と picture の中の場合（環境・福祉）の両方をカバーする。 */
-  .modal--story .modal__sub,
-  .modal--story .modal__inner > picture {
-    order: 2;
-  }
-  .modal--story .modal__sub {
-    display: block;
-    width: 82%;
-    max-width: none;
-    max-height: none;
-    margin: 1rem auto 0;
-  }
-  .modal--story .modal__inner > picture {
-    margin: 1rem 0 0;
-  }
-  .modal--story .modal__inner > picture .modal__sub {
-    margin: 0 auto;
-  }
-
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
   .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
   .modal--story .modal__text { font-size: clamp(1rem, 1.05vw, 1.075rem); }
