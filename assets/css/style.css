@@ -319,28 +319,28 @@ html.modal-open body {
   align-items: center;
   gap: 0.5rem;
   opacity: 0;
+  filter:
+    drop-shadow(0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.35));
   animation: fvScrollFadeIn 0.9s ease both;
   animation-delay: 2s;
 }
 .fv__scroll-label {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--color-text);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 0.2em 0.6em;
+  color: #fff;
 }
 .fv__scroll-line-wrap {
-  width: 1px;
+  width: 2px;
   height: 2.5rem;
   overflow: hidden;
-  filter: drop-shadow(0 0 0.1875rem rgba(255, 255, 255, 0.9));
 }
 .fv__scroll-line {
   display: block;
-  width: 1px;
+  width: 2px;
   height: 0.75rem;
-  background: var(--color-text);
+  background: #fff;
   animation: fvScrollFlow 1.6s ease-in-out infinite;
 }
 @keyframes fvScrollFadeIn {
