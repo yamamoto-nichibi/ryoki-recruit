@@ -1254,7 +1254,7 @@ html.modal-open body {
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
-    padding: calc(var(--gy1) + 0.25rem) var(--gx1) calc(var(--gy2) + 0.75rem);
+    padding: var(--gy1) var(--gx1) calc(var(--gy2) + 0.75rem);
   }
   .modal--story .modal__photo,
   .modal--story .modal__body-wrap,
