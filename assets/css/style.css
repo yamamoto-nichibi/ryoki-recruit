@@ -1478,7 +1478,7 @@ html.modal-open body {
   position: absolute;
   left: 50%;
   top: 78%;
-  width: clamp(18rem, 50vw, 50rem);
+  width: clamp(20rem, 56vw, 56rem);
   height: auto;
   transform: translate(-50%, 0%);
   /* 白抜き文字なので、明るい写真の上でも読めるよう暗いシャドウで浮かせる */
