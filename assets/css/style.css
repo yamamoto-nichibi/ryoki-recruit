@@ -534,9 +534,11 @@ html.modal-open body {
   .concept__grid img:nth-child(9)  { --l: 0%  !important; --t: 72.46% !important; --w: 48% !important; } /* const-training-2 */
   .concept__grid img:nth-child(10) { --l: 52% !important; --t: 72.46% !important; --w: 48% !important; } /* people-team-2 */
 
-  /* PC と同じく、カードは写真面付けの中央に重ねて載せる（写真の上に文字ボックス） */
+  /* PC と同じく、カードは写真面付けの中央に重ねて載せる（写真の上に文字ボックス）
+     ※ top を少し下げ、FV のキャッチコピー（そこに、リョーキ。）より後に表示されるようにする */
   .concept__card,
   .fv-static .concept__card {
+    top: 55%;
     width: min(84vw, 24rem);
     padding: 1.5rem 1.25rem;
   }
