@@ -1422,7 +1422,7 @@ body {
     top: auto !important;
   }
   .bubble__click {
-    width: clamp(4rem, 8vw, 5.75rem) !important;
+    width: clamp(5rem, 10vw, 7.25rem) !important;
   }
   .bubble--build .bubble__click {
     top: -14px !important;
