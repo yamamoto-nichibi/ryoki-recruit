@@ -305,7 +305,7 @@ html.modal-open body {
 .fv__scroll {
   position: absolute;
   left: 50%;
-  bottom: clamp(1.25rem, 4vh, 2.5rem);
+  bottom: clamp(0.5rem, 1.5vh, 1rem);
   transform: translateX(-50%);
   z-index: 32;
   display: flex;
@@ -400,8 +400,10 @@ html.modal-open body {
   .fv__copy {
     left: 0;
     right: 0;
-    top: calc(var(--header-h) + 0.75rem);
-    bottom: auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: fit-content;
     font-size: 1.125rem;
   }
   .fv__copy-question {
