@@ -1570,4 +1570,6 @@ html.modal-open body {
 @media (max-width: 640px) {
   .more__btn { min-width: min(100%, 20rem); }
   .need__collage img:nth-child(5) { display: none; }
+  .site-footer__links a { font-size: 12px; }
+  .site-footer__copy { font-size: 10px; }
 }
