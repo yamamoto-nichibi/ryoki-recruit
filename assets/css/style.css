@@ -1477,8 +1477,8 @@ html.modal-open body {
 .closing__catch {
   position: absolute;
   left: 50%;
-  top: 66%;
-  width: clamp(16.25rem, 44vw, 45rem);
+  top: 78%;
+  width: clamp(18rem, 50vw, 50rem);
   height: auto;
   transform: translate(-50%, 0%);
   /* 白抜き文字なので、明るい写真の上でも読めるよう暗いシャドウで浮かせる */
