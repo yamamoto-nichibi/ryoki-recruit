@@ -1433,11 +1433,8 @@ html.modal-open body {
   gap: 0;
 }
 .closing__strip img {
-  flex: 1 1 0;
-  min-width: 0;
-  height: clamp(18rem, 46vw, 34rem);
-  object-fit: cover;
-  object-position: 50% 25%;   /* 夕日と人物の上半身が収まる位置を優先 */
+  width: 100%;
+  height: auto;   /* 上下をクロップせず、写真本来の縦横比のまま表示 */
   display: block;
 }
 .closing__catch {
@@ -1583,5 +1580,4 @@ html.modal-open body {
 @media (max-width: 640px) {
   .more__btn { min-width: min(100%, 20rem); }
   .need__collage img:nth-child(5) { display: none; }
-  .closing__strip img { height: clamp(20rem, 100vw, 30rem); }
 }
