@@ -978,6 +978,7 @@ body {
 }
 /* .bubble は <button>：ボタンの見た目をリセットし、位置指定だけ残す */
 .soko__bubbles .bubble {
+  display: block;
   position: absolute;
   appearance: none;
   margin: 0;
