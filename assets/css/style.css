@@ -665,19 +665,83 @@ html.modal-open body {
   height: 1.75rem;   /* ルート文字サイズ＝画面幅に比例 */
 }
 
-/* 右側：外部サイトへのリンク。2つとも独立した白い箱ボタン（罫線でつながない） */
-.site-header__links {
+/* 右側：ハンバーガーメニューボタン */
+.site-header__menu-btn {
   margin-left: auto;
-  display: flex;
+  margin-right: clamp(1rem, 3vw, 2.5rem);
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
   align-items: center;
-  gap: clamp(0.6rem, 1.4vw, 1.25rem);
-  padding-right: clamp(1rem, 3vw, 2.5rem);
-  height: 100%;
+  justify-content: center;
+  background: #fff;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.site-header__menu-icon,
+.site-header__menu-icon::before,
+.site-header__menu-icon::after {
+  content: "";
+  display: block;
+  width: 1.375rem;
+  height: 2px;
+  background: var(--color-text);
+  transition: transform var(--transition), opacity var(--transition), background var(--transition);
+}
+.site-header__menu-icon {
+  position: relative;
+}
+.site-header__menu-icon::before {
+  position: absolute;
+  left: 0;
+  top: -0.5rem;
+}
+.site-header__menu-icon::after {
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+}
+.site-header__menu-btn.is-open .site-header__menu-icon {
+  background: transparent;
+}
+.site-header__menu-btn.is-open .site-header__menu-icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.site-header__menu-btn.is-open .site-header__menu-icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* ドロップダウンメニュー：外部サイトへのリンク一覧 */
+.site-header__menu {
+  position: fixed;
+  top: var(--header-h);
+  right: clamp(1rem, 3vw, 2.5rem);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 1rem 2.5rem -14px rgba(20, 30, 45, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.5rem);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+}
+.site-header__menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 .site-header__link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: space-between;
+  gap: 1.5rem;
   padding: 0.7rem 1.6rem;
   background: #fff;
   font-size: var(--fs-small);
@@ -773,15 +837,10 @@ html.modal-open body {
 
 /* 7. レスポンシブ --------------------------------- */
 @media (max-width: 640px) {
-  /* ヘッダーのリンクをコンパクトに */
-  .site-header__links {
-    gap: 0.9rem;
-    padding-right: 0.9rem;
-  }
-  .site-header__link {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.72rem;
-    letter-spacing: 0;
+  /* スマホではメニューを画面幅に近い形で表示 */
+  .site-header__menu {
+    left: 1rem;
+    right: 1rem;
   }
 }
 

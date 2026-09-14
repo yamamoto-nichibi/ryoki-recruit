@@ -4,7 +4,30 @@
 (function () {
   "use strict";
 
-  /* ヘッダーはロゴ＋外部リンクボタン2つのみ（ナビ／ハンバーガーなし）。 */
+  /* --- 1. ヘッダーのハンバーガーメニュー --- */
+  var menuBtn = document.querySelector(".site-header__menu-btn");
+  var menu = document.querySelector(".site-header__menu");
+  if (menuBtn && menu) {
+    var closeMenu = function () {
+      menu.classList.remove("is-open");
+      menuBtn.classList.remove("is-open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    };
+    menuBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var isOpen = menu.classList.toggle("is-open");
+      menuBtn.classList.toggle("is-open", isOpen);
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+    document.addEventListener("click", function (e) {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
 
   /* ファーストビューの時間差アニメーションは CSS のみで動作します
      （.fv__tile などの animation-delay: var(--d)）。JS は不要です。
