@@ -1089,14 +1089,14 @@ body {
   margin: 0 0 1em;
   font-weight: 700;
   line-height: 1.6;
-  font-size: clamp(16px, 1.2vw, 18px);
+  font-size: clamp(14px, 1.05vw, 16px);
   color: var(--color-text);
 }
 .modal--story .modal__text {
   margin: 0 0 0.9em;
   line-height: 1.6;
   font-size: clamp(14px, 1.05vw, 16px);
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 .modal--story .modal__text--em {
   margin-bottom: 0;
@@ -1115,7 +1115,7 @@ body {
 
 @media (max-width: 820px) {
   /* スマホでは PC 用の小さいクランプ値ではなく、最小サイズを底上げして読みやすくする */
-  .modal--story .modal__lead { font-size: clamp(1rem, 1.2vw, 1.1rem); }
+  .modal--story .modal__lead,
   .modal--story .modal__text { font-size: clamp(1rem, 1.05vw, 1.075rem); }
 }
 
