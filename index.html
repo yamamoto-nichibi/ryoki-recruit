@@ -211,7 +211,7 @@
         <div class="soko__bubbles-wrap">
         <ul class="soko__bubbles" aria-label="リョーキの3つの顔">
           <li>
-            <button type="button" class="bubble bubble--build" data-modal="modal-build" aria-haspopup="dialog">
+            <a href="#story-build" class="bubble bubble--build">
               <svg class="bubble__shape" viewBox="0 0 359 217" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                 <path d="M82.8983 179.837C37.4838 179.837 0.667969 143.022 0.667969 97.6072V90.2532C0.667969 40.7772 40.7762 0.668945 90.2522 0.668945H268.084C317.56 0.668945 357.668 40.7772 357.668 90.2532C357.668 139.729 317.56 179.837 268.084 179.837H148.415" stroke="currentColor" stroke-width="1.33708"/>
                 <path d="M148.415 179.837L89.918 216.272" stroke="currentColor" stroke-width="1.33708"/>
@@ -219,10 +219,10 @@
               <img class="bubble__click" src="assets/images/soko/click.svg" alt="" aria-hidden="true">
               <span class="bubble__label">リョーキ＝建設？</span>
               <img class="soko__bubble-photo soko__bubble-photo--build" src="assets/images/soko/item-build.png" alt="" aria-hidden="true">
-            </button>
+            </a>
           </li>
           <li>
-            <button type="button" class="bubble bubble--env" data-modal="modal-env" aria-haspopup="dialog">
+            <a href="#story-env" class="bubble bubble--env">
               <svg class="bubble__shape" viewBox="0 0 287 287" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                 <path d="M236.662 250.389C211.635 272.234 178.896 285.467 143.067 285.467C64.4221 285.467 0.667969 221.713 0.667969 143.068C0.667969 64.4231 64.4221 0.668945 143.067 0.668945C221.712 0.668945 285.466 64.4231 285.466 143.068C285.466 176.467 273.967 207.181 254.713 231.466" stroke="currentColor" stroke-width="1.33708"/>
                 <path d="M237.332 248.696L265.411 276.775" stroke="currentColor" stroke-width="1.33708"/>
@@ -230,26 +230,27 @@
               <img class="bubble__click" src="assets/images/soko/click.svg" alt="" aria-hidden="true">
               <span class="bubble__label">リョーキ＝環境？</span>
               <img class="soko__bubble-photo soko__bubble-photo--env" src="assets/images/soko/item-env.png" alt="" aria-hidden="true">
-            </button>
+            </a>
           </li>
           <li>
-            <button type="button" class="bubble bubble--welfare" data-modal="modal-welfare" aria-haspopup="dialog">
+            <a href="#story-welfare" class="bubble bubble--welfare">
               <svg class="bubble__shape" viewBox="0 0 313 239" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                 <path d="M157.269 206.786L312.207 191.263V82.5979L157.269 0.713867L0.667969 42.6804V152.454L68.2975 220.092H130.384L167.803 237.819" stroke="currentColor" stroke-width="1.33708"/>
               </svg>
               <img class="bubble__click" src="assets/images/soko/click.svg" alt="" aria-hidden="true">
               <span class="bubble__label">リョーキ＝福祉？</span>
               <img class="soko__bubble-photo soko__bubble-photo--welfare" src="assets/images/soko/item-welfare.png" alt="" aria-hidden="true">
-            </button>
+            </a>
           </li>
         </ul>
         </div>
       </div>
 
-      <!-- 吹き出しクリックで開くモーダル（フルスクリーン・ダーク） -->
-      <dialog class="modal modal--story" id="modal-build">
+    </section>
+
+    <!-- ===== 吹き出しの詳細セクション（建設・環境・福祉） ===== -->
+    <section class="modal--story" id="story-build" aria-label="リョーキ＝建設？">
         <div class="modal__inner">
-          <button type="button" class="modal__close">閉じる <span aria-hidden="true">×</span></button>
           <img class="modal__photo" src="assets/images/soko/modal_1.png" alt="" aria-hidden="true">
           <div class="modal__body-wrap">
             <p class="modal__heading">リョーキ＝建設？</p>
@@ -277,11 +278,10 @@
           <img class="modal__sub" src="assets/images/soko/modal_1_sub.png" alt="" aria-hidden="true">
           <img class="modal__copy" src="assets/images/soko/modal_copy_1.png" alt="そこに、リョーキ。">
         </div>
-      </dialog>
+    </section>
 
-      <dialog class="modal modal--story" id="modal-env">
+    <section class="modal--story" id="story-env" aria-label="リョーキ＝環境？">
         <div class="modal__inner">
-          <button type="button" class="modal__close">閉じる <span aria-hidden="true">×</span></button>
           <img class="modal__photo" src="assets/images/soko/modal_2.png" alt="" aria-hidden="true">
           <div class="modal__body-wrap">
             <p class="modal__heading">リョーキ＝環境？</p>
@@ -312,11 +312,10 @@
           </picture>
           <img class="modal__copy" src="assets/images/soko/modal_copy_2.png" alt="そこに、リョーキ。">
         </div>
-      </dialog>
+    </section>
 
-      <dialog class="modal modal--story" id="modal-welfare">
+    <section class="modal--story" id="story-welfare" aria-label="リョーキ＝福祉？">
         <div class="modal__inner">
-          <button type="button" class="modal__close">閉じる <span aria-hidden="true">×</span></button>
           <img class="modal__photo" src="assets/images/soko/modal_3.png" alt="" aria-hidden="true">
           <div class="modal__body-wrap">
             <p class="modal__heading">リョーキ＝福祉？</p>
@@ -351,7 +350,6 @@
           </picture>
           <img class="modal__copy" src="assets/images/soko/modal_copy_3.png" alt="そこに、リョーキ。">
         </div>
-      </dialog>
     </section>
 
     <!-- ===== リョーキという会社を、人にたとえると ===== -->
