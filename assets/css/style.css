@@ -732,6 +732,14 @@ body {
     padding-top: 0;
   }
 }
+.work-cta__catch {
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: center;
+  font-size: clamp(15px, 1.8vw, 1.05rem);
+}
 .work-cta__logo {
   display: block;
   width: clamp(14rem, 32vw, 22rem);
@@ -1088,11 +1096,23 @@ body {
   margin-inline: auto;
 }
 .modal--story .modal__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
   margin: 0 0 1.5rem;
   font-size: clamp(24px, 3.4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.32;
+}
+
+/* 見出し左の飾り数字（01〜05） */
+.num-badge {
+  display: block;
+  flex-shrink: 0;
+  height: 0.72em;
+  width: auto;
+  color: var(--color-text);
 }
 .modal--story .modal__lead {
   margin: 0 0 1em;
@@ -1201,9 +1221,19 @@ body {
   height: auto;
   display: block;
 }
-.liken__head {
+.liken__head-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
   margin: 0 0 1.75rem;
   font-size: clamp(24px, 3.6vw, 2.3rem);
+}
+.liken__head-row .num-badge {
+  margin-top: 0.32em;
+}
+.liken__head {
+  margin: 0;
+  font-size: inherit;
   font-weight: 700;
   line-height: 1.48;
 }
@@ -1260,6 +1290,18 @@ body {
   max-width: 47.5rem;
   margin-inline: auto;
   padding-inline: var(--container-pad);
+}
+.more__head {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0 0 1.5rem;
+  font-size: clamp(18px, 2.4vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.more__head .num-badge {
+  color: #fff;
 }
 .more__copy {
   margin: 0 0 1.5rem;
