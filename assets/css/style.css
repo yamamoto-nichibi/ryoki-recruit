@@ -284,7 +284,6 @@ html.modal-open body {
   color: var(--color-primary);
 }
 .fv__copy-line--box {
-  border: 1px solid var(--color-text);
   padding: 0.1em 0.4em;
 }
 
@@ -352,9 +351,9 @@ html.modal-open body {
   .fv__copy {
     left: 0;
     right: auto;
-    top: calc(var(--header-h) + 0.75rem);
+    top: calc(var(--header-h) + 1.5rem);
     bottom: auto;
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
   .fv__copy-line {
     padding: 0.4em 0.9rem 0.4em 0.9rem;
@@ -365,8 +364,8 @@ html.modal-open body {
     right: 0;
     bottom: -1.5rem;
     top: auto;
-    width: 90%;
-    max-width: 90%;
+    width: 98%;
+    max-width: 98%;
   }
 }
 
