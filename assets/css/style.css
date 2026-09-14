@@ -1510,6 +1510,18 @@ html.modal-open body {
     padding-bottom: clamp(3rem, 10vh, 7rem);
   }
 
+  /* #liken 上の区切り線を、#soko の区切り線と同じ見た目に（全幅ではなくコンテンツ幅に揃える） */
+  .liken {
+    border-top: none;
+  }
+  .liken__inner {
+    padding-inline: 0;
+    padding-top: clamp(2rem, 6vh, 4rem);
+    width: calc(100% - 2 * var(--container-pad));
+    margin-inline: auto;
+    border-top: 1.5px solid var(--color-text);
+  }
+
   /* 吹き出しラップは PC 専用の sticky/aspect-ratio を解除し、中の ul にレイアウトを任せる */
   .soko__bubbles-wrap {
     position: static;
