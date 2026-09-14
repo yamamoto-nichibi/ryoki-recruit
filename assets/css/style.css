@@ -546,7 +546,7 @@ html.modal-open body {
     transform: none;
     margin: -15.4rem auto 5rem;
     width: min(84vw, 24rem);
-    padding: 1.5rem 1.25rem;
+    padding: 3rem 1.25rem;
   }
 }
 
