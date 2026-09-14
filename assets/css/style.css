@@ -1265,24 +1265,12 @@ body {
   text-align: center;
   overflow: hidden;
 }
-/* 背景動画（フルブリード。読み込み前・非対応時は crowd.jpg を敷く） */
-.more__bg {
-  position: absolute;
-  inset: 0;
+.more__photo {
+  display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 2500 / 890;
   object-fit: cover;
-  z-index: 0;
-  background: #10151b url("../images/fv/crowd.jpg") center / cover no-repeat;
-  pointer-events: none;
-}
-/* 動画の上に暗いスクリム（白文字の可読性を確保） */
-.more::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(rgba(16, 21, 27, 0.7), rgba(16, 21, 27, 0.82));
+  margin-bottom: clamp(2rem, 5vw, 3rem);
 }
 .more__inner {
   position: relative;
