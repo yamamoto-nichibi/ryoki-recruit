@@ -366,7 +366,8 @@ html.modal-open body {
      ここで上書きするには custom property にも !important が要る。 */
 @media (max-width: 640px) {
   .fv {
-    min-height: 84vh;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .fv__tile {
