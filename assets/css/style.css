@@ -1110,7 +1110,7 @@ body {
    色をセクションごとの事業カラーにそろえ、間隔を詰めて左揃えに。ロゴは3倍の大きさ。 */
 .modal--story .modal__logo {
   display: block;
-  width: clamp(27rem, 60vw, 39rem);
+  width: clamp(20rem, 46vw, 29rem);
   height: auto;
   margin-top: 0.5rem;
 }
