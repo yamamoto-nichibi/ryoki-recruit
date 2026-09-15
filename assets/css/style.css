@@ -1492,10 +1492,20 @@ body {
 
 @media (max-width: 640px) {
   .site-footer__links {
-    border-top: 1px solid #fff;
-    margin-inline: 2rem;
+    position: relative;
     padding-top: 1.5rem;
   }
-  .site-footer__links a { font-size: 12px; }
+  .site-footer__links::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    border-top: 1px solid #fff;
+  }
+  .site-footer__links a {
+    padding: 0 1.5rem;
+    font-size: 12px;
+  }
   .site-footer__copy { font-size: 10px; }
 }
