@@ -899,7 +899,7 @@ body {
 .soko--text {
   padding-top: clamp(2rem, 6vh, 4rem);
   padding-bottom: clamp(2rem, 6vh, 4rem);
-  box-shadow: 0 -2rem 3rem -1.5rem rgba(20, 20, 20, 0.35);
+  box-shadow: 0 -1.5rem 2.25rem -1.5rem rgba(20, 20, 20, 0.16);
 }
 .soko__inner {
   position: relative;
