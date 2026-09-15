@@ -214,7 +214,7 @@
     </section>
 
     <!-- ===== 吹き出しの詳細セクション（建設・環境・福祉） ===== -->
-    <section class="modal--story" id="story-build" aria-label="リョーキ＝建設？">
+    <section class="modal--story" id="story-build" data-reveal aria-label="リョーキ＝建設？">
         <div class="modal__inner">
           <img class="modal__photo" src="assets/images/soko/modal_1.png" alt="" aria-hidden="true">
           <div class="modal__body-wrap">
@@ -224,8 +224,8 @@
             </p>
             <p class="modal__text">
               その印象は、間違っていません。<br>
-              リョーキは、建設機械のレンタル事業を通じて、<br>
-              街が動き出す、その「現場」に関わっています。
+              <span class="modal__text--underline">リョーキは、建設機械のレンタル事業を通じて、<br>
+              街が動き出す、その「現場」に関わっています。</span>
             </p>
             <p class="modal__text">
               道を拓き、営みをつくり、<br>
@@ -262,7 +262,7 @@
         </div>
     </section>
 
-    <section class="modal--story" id="story-env" aria-label="リョーキ＝環境？">
+    <section class="modal--story" id="story-env" data-reveal aria-label="リョーキ＝環境？">
         <div class="modal__inner">
           <img class="modal__photo" src="assets/images/soko/modal_2.png" alt="" aria-hidden="true">
           <div class="modal__body-wrap">
@@ -272,8 +272,8 @@
             </p>
             <p class="modal__text">
               その印象は、間違っていません。<br>
-              リョーキは、環境機器を通じて、<br>
-              循環が生まれる、その「変化」に関わっています。
+              <span class="modal__text--underline">リョーキは、環境機器を通じて、<br>
+              循環が生まれる、その「変化」に関わっています。</span>
             </p>
             <p class="modal__text">
               使われたものが、次の価値へ向かう。<br>
@@ -310,7 +310,7 @@
         </div>
     </section>
 
-    <section class="modal--story" id="story-welfare" aria-label="リョーキ＝福祉？">
+    <section class="modal--story" id="story-welfare" data-reveal aria-label="リョーキ＝福祉？">
         <div class="modal__inner">
           <img class="modal__photo" src="assets/images/soko/modal_3.png" alt="" aria-hidden="true">
           <div class="modal__body-wrap">
@@ -320,8 +320,8 @@
             </p>
             <p class="modal__text">
               その印象は、間違っていません。<br>
-              リョーキは、福祉用具のレンタル事業を通じて、<br>
-              毎日が前へ進む、その「瞬間」に関わっています。
+              <span class="modal__text--underline">リョーキは、福祉用具のレンタル事業を通じて、<br>
+              毎日が前へ進む、その「瞬間」に関わっています。</span>
             </p>
             <p class="modal__text">
               行ってみたい場所がある。会いたい人がいる。<br>
@@ -428,25 +428,35 @@
     <section class="more" id="more" data-reveal aria-label="More Information">
       <div class="more__inner">
         <img class="more__photo" src="assets/images/more-top-team.jpg" alt="" loading="lazy" decoding="async">
-        <h2 class="more__head"><svg class="num-badge" viewBox="0 0 12.55 12.34" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M0,8.85V3.49C0,.98,1.21,0,2.72,0s2.72.98,2.72,3.49v5.36c0,2.51-1.21,3.49-2.72,3.49s-2.72-.98-2.72-3.49ZM4.42,8.85V3.49c0-1.77-.58-2.54-1.7-2.54s-1.7.77-1.7,2.54v5.36c0,1.77.58,2.54,1.7,2.54s1.7-.77,1.7-2.54Z" fill="currentColor"/><path d="M8.26,6.42h-.88V.12h4.77v1.02h-3.79v3.8c.35-.53.82-.93,1.6-.93,1.81,0,2.59,1.72,2.59,4.44,0,2.38-.96,3.89-2.77,3.89-1.46,0-2.53-1.31-2.63-2.98h.98c.16,1.25.79,2.03,1.65,2.03,1.1,0,1.75-.82,1.75-2.95s-.47-3.42-1.75-3.42c-.75,0-1.23.65-1.53,1.39Z" fill="currentColor"/></svg>もし、リョーキで働くとしたら。</h2>
+        <h2 class="more__head"><svg class="num-badge" viewBox="0 0 12.55 12.34" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M0,8.85V3.49C0,.98,1.21,0,2.72,0s2.72.98,2.72,3.49v5.36c0,2.51-1.21,3.49-2.72,3.49s-2.72-.98-2.72-3.49ZM4.42,8.85V3.49c0-1.77-.58-2.54-1.7-2.54s-1.7.77-1.7,2.54v5.36c0,1.77.58,2.54,1.7,2.54s1.7-.77,1.7-2.54Z" fill="currentColor"/><path d="M8.26,6.42h-.88V.12h4.77v1.02h-3.79v3.8c.35-.53.82-.93,1.6-.93,1.81,0,2.59,1.72,2.59,4.44,0,2.38-.96,3.89-2.77,3.89-1.46,0-2.53-1.31-2.63-2.98h.98c.16,1.25.79,2.03,1.65,2.03,1.1,0,1.75-.82,1.75-2.95s-.47-3.42-1.75-3.42c-.75,0-1.23.65-1.53,1.39Z" fill="currentColor"/></svg>もし、<br>リョーキで働くとしたら。</h2>
+        <p class="more__copy">「リョーキ」という名前が少し気になったあなたへ。</p>
         <p class="more__copy">
-          「リョーキ」という名前が少し気になったあなたへ。<br><br>
           自分が、何を支える仕事をするのか。<br>
           誰の役に立つ仕事をするのか。<br>
-          どんな姿勢で働くのか。<br><br>
+          どんな姿勢で働くのか。
+        </p>
+        <p class="more__copy">
           リョーキには、<br>
           建設・環境・福祉というフィールドがあります。<br>
           けれど、そのどこにいても、<br>
           誰かの「必要」に応える仕事があります。<br>
-          あなたの「そこ」はどこだろう。<br><br>
+          あなたの「そこ」はどこだろう。
+        </p>
+        <p class="more__copy">
           街が動き出す、その現場。<br>
           循環が生まれる、その変化。<br>
-          毎日が前に進む、その瞬間。<br><br>
+          毎日が前に進む、その瞬間。
+        </p>
+        <p class="more__copy">
           そのひとつひとつを、<br>
-          支えている人たちがいます。<br><br>
+          支えている人たちがいます。
+        </p>
+        <p class="more__copy">
           どんな仕事があるのか。<br>
           どんな人が働いているのか。<br>
-          どんな毎日が待っているのか。<br><br>
+          どんな毎日が待っているのか。
+        </p>
+        <p class="more__copy">
           ここから先は、<br>
           もっと具体的なリョーキを見てみてください。
         </p>
@@ -471,7 +481,7 @@
   <!-- ===== リョーキで働く、とは（外部リンクCTA） ===== -->
   <div class="work-cta-wrap">
     <p class="work-cta__catch">必要なところに、必要な人になる。<br><br>街にも。<br>循環にも。<br>暮らしにも。</p>
-    <svg class="work-cta__logo" viewBox="0 0 1326 176" fill="none" aria-label="そこに、リョーキ。" xmlns="http://www.w3.org/2000/svg">
+    <svg class="work-cta__logo" data-reveal viewBox="0 0 1326 176" fill="none" aria-label="そこに、リョーキ。" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.4376 174.499H141.042V129.375H62.7262V105.283H158.459V59.9736H0V105.283H17.4376V174.499Z" fill="currentColor"/>
       <path d="M54.0161 50.937V5.64844H8.70703V50.9575H54.0161V50.937Z" fill="currentColor"/>
       <path d="M149.751 50.937V5.64844H104.441V50.9575H149.751V50.937Z" fill="currentColor"/>
