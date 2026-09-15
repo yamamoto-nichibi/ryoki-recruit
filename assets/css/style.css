@@ -1493,6 +1493,7 @@ body {
 @media (max-width: 640px) {
   .site-footer__links {
     position: relative;
+    row-gap: 0.5rem;
     padding-top: 1.5rem;
   }
   .site-footer__links::before {
